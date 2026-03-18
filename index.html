@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Chaitanya Kumar Reddy Pallerla – PhD Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0d0d0f; --surface:rgba(255,255,255,0.04); --surface-hover:rgba(255,255,255,0.08);
+      --border:rgba(255,255,255,0.09); --border-bright:rgba(255,255,255,0.18);
+      --accent:#ff6b2b; --accent2:#ffb347; --text:#f0ede8;
+      --text-muted:rgba(240,237,232,0.5); --text-dim:rgba(240,237,232,0.3);
+      --glass-blur:blur(20px) saturate(180%); --glow:rgba(255,107,43,0.15); --nav-h:68px;
+    }
+    body.light {
+      --bg:#f5f2ed; --surface:rgba(0,0,0,0.04); --surface-hover:rgba(0,0,0,0.07);
+      --border:rgba(0,0,0,0.09); --border-bright:rgba(0,0,0,0.18);
+      --text:#1a1714; --text-muted:rgba(26,23,20,0.55); --text-dim:rgba(26,23,20,0.35);
+      --glow:rgba(255,107,43,0.08);
+    }
+    body.light .bg-grid { background-image:linear-gradient(rgba(255,107,43,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,0.06) 1px,transparent 1px); }
+    body.light .bg-orb-1 { background:radial-gradient(circle,rgba(255,107,43,0.10),transparent 70%); }
+    body.light .bg-orb-2 { background:radial-gradient(circle,rgba(255,179,71,0.07),transparent 70%); }
+    body.light .top-nav { background:rgba(245,242,237,0.75); }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--text); font-family:'Space Mono',monospace; min-height:100vh; overflow-x:hidden; transition:background 0.5s,color 0.5s; }
+    .bg-grid { position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(255,107,43,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;transition:background-image 0.5s; }
+    .bg-orb { position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;transition:background 0.5s; }
+    .bg-orb-1 { width:600px;height:600px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(255,107,43,0.12),transparent 70%); }
+    .bg-orb-2 { width:400px;height:400px;bottom:10%;left:-150px;background:radial-gradient(circle,rgba(255,179,71,0.08),transparent 70%); }
+    /* NAV */
+    .top-nav { position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(13,13,15,0.75);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);transition:background 0.3s; }
+    .nav-logo { font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--text);letter-spacing:-0.01em; }
+    .nav-logo span { color:var(--accent); }
+    .nav-links { display:flex;gap:0.25rem;align-items:center; }
+    .nav-btn { display:flex;flex-direction:column;align-items:center;gap:0.2rem;padding:0.45rem 0.7rem;background:transparent;border:none;cursor:pointer;color:var(--text-muted);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;text-transform:uppercase;border-radius:10px;transition:all 0.25s;text-decoration:none; }
+    .nav-btn svg { transition:stroke 0.25s; }
+    .nav-btn:hover,.nav-btn.active { color:var(--accent);background:rgba(255,107,43,0.08); }
+    .nav-btn:hover svg,.nav-btn.active svg { stroke:var(--accent); }
+    /* THEME TOGGLE */
+    #theme-toggle-button { font-size:13px;display:inline-flex;align-items:center;width:5.4em;cursor:pointer;pointer-events:auto;isolation:isolate;flex-shrink:0;margin-left:0.5rem; }
+    #toggle { opacity:0;width:0;height:0;pointer-events:none; }
+    #container,#patches,#stars,#button,#sun,#moon,#cloud { transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:0.25s; }
+    #toggle:checked + svg #container { fill:#2b4360; }
+    #toggle:checked + svg #button    { transform:translate(28px,2.333px); }
+    #sun { opacity:1; } #toggle:checked + svg #sun { opacity:0; }
+    #moon { opacity:0; } #toggle:checked + svg #moon { opacity:1; }
+    #cloud { opacity:1; } #toggle:checked + svg #cloud { opacity:0; }
+    #stars { opacity:0; } #toggle:checked + svg #stars { opacity:1; }
+    @media(max-width:480px){ #theme-toggle-button{font-size:11px;width:4.8em;} }
+    /* PAGES */
+    .page-wrapper { position:relative;z-index:1;padding-top:var(--nav-h); }
+    .page-section { display:none;min-height:calc(100vh - var(--nav-h));animation:pageFadeIn 0.4s ease forwards; }
+    .page-section.active { display:block; }
+    @keyframes pageFadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+    .container { max-width:1100px;margin:0 auto;padding:0 clamp(1rem,4vw,2rem) 6rem; }
+    /* HOME */
+    .home-hero { display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:clamp(2.5rem,7vw,5rem) 0 3rem; }
+    .home-label { font-size:0.65rem;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem; }
+    .home-label::after { content:'';height:1px;width:50px;background:var(--accent);opacity:0.5; }
+    .home-name { font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.0;letter-spacing:-0.02em;margin-bottom:0.8rem; }
+    .home-name em { color:var(--accent);font-style:italic; }
+    .home-role { font-size:0.78rem;color:var(--accent2);letter-spacing:0.1em;margin-bottom:1.2rem;text-transform:uppercase; }
+    .home-bio { font-size:0.78rem;color:var(--text-muted);line-height:1.85;max-width:460px;margin-bottom:2rem; }
+    .home-cta { display:flex;gap:1rem;flex-wrap:wrap; }
+    .btn-primary { display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.4rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:50px;font-family:'Space Mono',monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s; }
+    .btn-primary:hover { transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,43,0.35); }
+    .btn-ghost { display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.4rem;background:transparent;color:var(--text);border:1px solid var(--border-bright);border-radius:50px;font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.2s; }
+    .btn-ghost:hover { border-color:var(--accent);color:var(--accent);background:rgba(255,107,43,0.06); }
+    .home-visual { display:flex;justify-content:center;align-items:center;position:relative; }
+    .profile-ring-wrap { position:relative;display:inline-block; }
+    .profile-img-wrap { width:clamp(220px,28vw,320px);height:clamp(220px,28vw,320px);border-radius:50%;overflow:hidden;border:3px solid rgba(255,107,43,0.3);box-shadow:0 0 80px rgba(255,107,43,0.2),0 0 0 12px rgba(255,107,43,0.06);animation:float 4s ease-in-out infinite;position:relative;z-index:1;background:linear-gradient(135deg,rgba(255,107,43,0.1),rgba(255,179,71,0.07)); }
+    .profile-img-wrap img { width:100%;height:100%;object-fit:cover;object-position:center top; }
+    .profile-fallback { width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:6rem;color:var(--accent);opacity:0.4; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .profile-ring { position:absolute;inset:-18px;border:1px dashed rgba(255,107,43,0.2);border-radius:50%;animation:spin-slow 30s linear infinite; }
+    @keyframes spin-slow { to{transform:rotate(360deg)} }
+    .home-stats { display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:4rem; }
+    .home-stat { padding:1.25rem 1rem;background:var(--surface);text-align:center;transition:background 0.3s; }
+    .home-stat:hover { background:var(--surface-hover); }
+    .home-stat-val { font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--accent);display:block; }
+    .home-stat-lbl { font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem; }
+    .section-label { font-size:0.62rem;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;font-weight:700;margin-bottom:0.8rem; }
+    .section-title { font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;margin-bottom:2rem; }
+    .section-title em { color:var(--accent);font-style:italic; }
+    .areas-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;margin-bottom:4rem; }
+    .area-card { background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.3rem;transition:all 0.3s;position:relative;overflow:hidden; }
+    .area-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.3s; }
+    .area-card:hover { background:var(--surface-hover);border-color:var(--border-bright);transform:translateY(-3px); }
+    .area-card:hover::before { opacity:1; }
+    .area-icon { font-size:1.7rem;margin-bottom:0.7rem; }
+    .area-name { font-size:0.8rem;font-weight:700;margin-bottom:0.35rem; }
+    .area-desc { font-size:0.68rem;color:var(--text-muted);line-height:1.6; }
+    .news-list { display:flex;flex-direction:column;gap:0.7rem;margin-bottom:4rem; }
+    .news-item { display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 1.1rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:background 0.25s,border-color 0.25s; }
+    .news-item:hover { background:var(--surface-hover);border-color:var(--border-bright); }
+    .news-date { font-size:0.6rem;color:var(--accent);white-space:nowrap;margin-top:0.1rem;letter-spacing:0.08em;font-weight:700; }
+    .news-text { font-size:0.73rem;color:var(--text-muted);line-height:1.6;flex:1; }
+    .news-text strong { color:var(--text); }
+    .news-badge { font-size:0.55rem;padding:0.15rem 0.5rem;background:rgba(255,107,43,0.1);color:var(--accent);border:1px solid rgba(255,107,43,0.2);border-radius:4px;white-space:nowrap;letter-spacing:0.08em;text-transform:uppercase;align-self:flex-start;margin-top:0.1rem; }
+    /* ABOUT */
+    .about-hero { padding:clamp(2.5rem,7vw,4.5rem) 0 2.5rem; }
+    .about-grid { display:grid;grid-template-columns:300px 1fr;gap:3rem;margin-bottom:4rem;align-items:start; }
+    .about-photo-card { background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;position:sticky;top:calc(var(--nav-h) + 1.5rem); }
+    .about-photo-card img { width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top; }
+    .about-photo-fallback { width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,rgba(255,107,43,0.1),rgba(255,179,71,0.07));display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:6rem;color:var(--accent);opacity:0.4; }
+    .about-photo-info { padding:1.2rem; }
+    .about-photo-name { font-family:'DM Serif Display',serif;font-size:1.15rem;margin-bottom:0.25rem; }
+    .about-photo-role { font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase; }
+    .about-photo-affil { font-size:0.65rem;color:var(--text-muted);margin-top:0.25rem; }
+    .about-section { margin-bottom:2.8rem; }
+    .about-section-title { font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:1rem; }
+    .about-section-title::after { content:'';flex:1;height:1px;background:var(--border); }
+    .about-para { font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-bottom:0.9rem; }
+    .about-para strong { color:var(--text); }
+    .edu-timeline { display:flex;flex-direction:column; }
+    .edu-item { display:flex;gap:1.4rem;padding-bottom:1.8rem;position:relative; }
+    .edu-item:not(:last-child)::after { content:'';position:absolute;left:9px;top:22px;bottom:0;width:1px;background:var(--border); }
+    .edu-dot { width:20px;height:20px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-top:3px; }
+    .edu-degree { font-size:0.8rem;font-weight:700;margin-bottom:0.18rem; }
+    .edu-school { font-size:0.72rem;color:var(--accent2);margin-bottom:0.18rem; }
+    .edu-period { font-size:0.62rem;color:var(--text-dim);letter-spacing:0.08em;margin-bottom:0.25rem; }
+    .edu-detail { font-size:0.68rem;color:var(--text-muted); }
+    .skills-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:0.6rem; }
+    .skill-chip { padding:0.65rem 0.9rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;font-size:0.7rem;color:var(--text-muted);display:flex;align-items:center;gap:0.5rem;transition:all 0.2s; }
+    .skill-chip:hover { background:var(--surface-hover);border-color:var(--accent);color:var(--accent); }
+    .skill-dot { width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0; }
+    .award-list { display:flex;flex-direction:column;gap:0.6rem; }
+    .award-item { display:flex;align-items:flex-start;gap:1rem;padding:0.85rem 1.1rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all 0.2s; }
+    .award-item:hover { background:var(--surface-hover);border-color:var(--border-bright); }
+    .award-year { font-size:0.62rem;color:var(--accent);font-weight:700;white-space:nowrap;margin-top:0.1rem;letter-spacing:0.06em; }
+    .award-text { font-size:0.73rem;color:var(--text-muted);line-height:1.55; }
+    /* ══════════════════════════════════════
+       PROJECTS — Grid Cards + Drawer Panel
+    ══════════════════════════════════════ */
+    .projects-hero { padding:clamp(2.5rem,7vw,4.5rem) 0 2.5rem; }
+    .projects-filter { display:flex;gap:0.55rem;flex-wrap:wrap;margin-bottom:2rem; }
+    .pf-btn { padding:0.38rem 0.95rem;border-radius:50px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Space Mono',monospace;font-size:0.66rem;cursor:pointer;letter-spacing:0.05em;transition:all 0.25s; }
+    .pf-btn:hover,.pf-btn.active { border-color:var(--accent);color:var(--accent);background:rgba(255,107,43,0.08); }
+
+    /* Grid */
+    .projects-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem;margin-bottom:4rem; }
+
+    /* Card */
+    .proj-card {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:18px; overflow:hidden;
+      transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      cursor:pointer; position:relative;
+    }
+    .proj-card:hover {
+      border-color:rgba(255,107,43,0.35);
+      box-shadow:0 20px 50px rgba(0,0,0,0.3),0 0 0 1px rgba(255,107,43,0.08);
+      transform:translateY(-5px);
+    }
+    .proj-card.active-card {
+      border-color:var(--accent);
+      box-shadow:0 0 0 2px rgba(255,107,43,0.25);
+    }
+
+    /* Thumbnail */
+    .proj-thumb {
+      height:170px;
+      position:relative; overflow:hidden;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(135deg,rgba(255,107,43,0.07),rgba(255,179,71,0.05));
+    }
+    .proj-thumb img {
+      width:100%; height:100%; object-fit:cover; object-position:center;
+    }
+    .proj-card:hover .proj-thumb img { filter:brightness(1.05); }
+    .proj-thumb-fallback {
+      width:100%; height:100%; display:flex; align-items:center;
+      justify-content:center; font-size:3.2rem;
+    }
+    .proj-thumb-badge {
+      position:absolute; top:0.7rem; right:0.7rem;
+      font-size:0.56rem; padding:0.18rem 0.55rem;
+      background:rgba(13,13,15,0.75); backdrop-filter:blur(8px);
+      color:var(--accent); border:1px solid rgba(255,107,43,0.22);
+      border-radius:20px; letter-spacing:0.1em; text-transform:uppercase; z-index:1;
+    }
+    .proj-open-hint {
+      position:absolute; bottom:0.7rem; left:50%; transform:translateX(-50%);
+      font-size:0.55rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:#fff; background:var(--accent); border-radius:20px;
+      padding:0.15rem 0.6rem; opacity:0; transition:opacity 0.2s; white-space:nowrap;
+    }
+    .proj-card:hover .proj-open-hint { opacity:1; }
+    .proj-card.active-card .proj-open-hint { opacity:1; }
+
+    .proj-body { padding:1.3rem; }
+    .proj-tags { display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.7rem; }
+    .proj-tag { font-size:0.56rem;padding:0.13rem 0.48rem;background:var(--surface-hover);color:var(--text-dim);border-radius:4px;letter-spacing:0.06em;text-transform:uppercase; }
+    .proj-title { font-family:'DM Serif Display',serif;font-size:1rem;margin-bottom:0.55rem;line-height:1.3; }
+    .proj-desc { font-size:0.7rem;color:var(--text-muted);line-height:1.65;margin-bottom:1rem; }
+    .proj-footer { display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem; }
+    .proj-status { font-size:0.6rem;color:var(--text-dim);letter-spacing:0.06em; }
+    .proj-link { font-size:0.62rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:0.3rem;transition:gap 0.2s;text-decoration:none; }
+    .proj-card:hover .proj-link { gap:0.5rem; }
+
+    /* ── Drawer overlay ── */
+    .proj-drawer-overlay {
+      display:none;
+      position:fixed; inset:0; z-index:500;
+      background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(4px);
+      animation:overlayIn 0.3s ease forwards;
+    }
+    .proj-drawer-overlay.open { display:block; }
+    @keyframes overlayIn { from{opacity:0} to{opacity:1} }
+
+    /* ── Drawer panel ── */
+    .proj-drawer {
+      position:fixed; top:0; right:0; bottom:0; z-index:501;
+      width:min(680px, 92vw);
+      background:var(--bg);
+      border-left:1px solid var(--border);
+      box-shadow:-20px 0 60px rgba(0,0,0,0.4);
+      display:flex; flex-direction:column;
+      transform:translateX(100%);
+      transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);
+      overflow:hidden;
+    }
+    .proj-drawer.open { transform:translateX(0); }
+
+    /* Drawer header */
+    .drawer-header {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1rem 1.4rem;
+      border-bottom:1px solid var(--border);
+      background:var(--surface);
+      flex-shrink:0;
+    }
+    .drawer-header-title {
+      font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase;
+      color:var(--text-muted);
+    }
+    .drawer-close {
+      width:32px; height:32px; border-radius:50%;
+      background:transparent; border:1px solid var(--border);
+      color:var(--text-muted); font-size:1.1rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:all 0.2s; line-height:1;
+    }
+    .drawer-close:hover { border-color:var(--accent); color:var(--accent); }
+
+    /* Drawer scrollable body */
+    .drawer-body {
+      flex:1; overflow-y:auto; padding:1.5rem 1.6rem 3rem;
+    }
+    .drawer-body::-webkit-scrollbar { width:4px; }
+    .drawer-body::-webkit-scrollbar-thumb { background:var(--border-bright); border-radius:4px; }
+
+    /* Sketchfab viewer inside drawer */
+    .sketchfab-viewer-wrap {
+      position:relative;
+      width:100%; aspect-ratio:16/9;
+      border-radius:14px; overflow:hidden;
+      border:1px solid var(--border);
+      background:#111;
+      margin-bottom:1.4rem;
+    }
+    .sketchfab-viewer-wrap iframe { width:100%; height:100%; border:none; display:block; }
+    .viewer-click-overlay {
+      position:absolute; inset:0; cursor:pointer; z-index:2;
+      background:rgba(0,0,0,0.02);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .viewer-click-overlay span {
+      font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:rgba(255,255,255,0.5); background:rgba(0,0,0,0.5);
+      padding:0.3rem 0.8rem; border-radius:20px; backdrop-filter:blur(4px);
+      pointer-events:none;
+    }
+    .sketchfab-viewer-wrap.loaded .viewer-click-overlay { display:none; }
+
+    /* No-3d fallback thumb */
+    .no-viewer-thumb {
+      width:100%; aspect-ratio:16/9;
+      border-radius:14px; overflow:hidden;
+      border:1px solid var(--border);
+      margin-bottom:1.4rem;
+      display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,rgba(255,107,43,0.06),rgba(255,179,71,0.04));
+      font-size:5rem;
+    }
+
+    /* Panel content typography */
+    .proj-panel-badge {
+      display:inline-flex; align-items:center; gap:0.4rem;
+      font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--accent); margin-bottom:0.7rem;
+    }
+    .proj-panel-badge::before {
+      content:''; width:6px; height:6px; border-radius:50%;
+      background:var(--accent); display:inline-block;
+    }
+    .proj-panel-title {
+      font-family:'DM Serif Display',serif;
+      font-size:clamp(1.3rem,3vw,1.9rem);
+      line-height:1.15; margin-bottom:0.9rem;
+    }
+    .proj-panel-desc {
+      font-size:0.76rem; color:var(--text-muted); line-height:1.85;
+      margin-bottom:1.1rem;
+    }
+    .proj-panel-chips {
+      display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1.1rem;
+    }
+    .proj-panel-chip {
+      font-size:0.58rem; padding:0.2rem 0.6rem;
+      background:rgba(255,107,43,0.08); color:var(--accent);
+      border:1px solid rgba(255,107,43,0.2); border-radius:4px;
+      letter-spacing:0.07em; text-transform:uppercase;
+    }
+    .proj-panel-highlights {
+      display:flex; flex-direction:column; gap:0.45rem; margin-bottom:1.3rem;
+    }
+    .proj-panel-hl {
+      display:flex; align-items:flex-start; gap:0.6rem;
+      font-size:0.72rem; color:var(--text-muted); line-height:1.55;
+    }
+    .proj-panel-hl::before {
+      content:'→'; color:var(--accent); flex-shrink:0; font-size:0.65rem; margin-top:0.06rem;
+    }
+    .proj-panel-actions { display:flex; align-items:center; gap:0.9rem; flex-wrap:wrap; }
+    .proj-panel-link {
+      display:inline-flex; align-items:center; gap:0.45rem;
+      padding:0.65rem 1.3rem;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#fff; border-radius:50px;
+      font-family:'Space Mono',monospace; font-size:0.66rem;
+      font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+      text-decoration:none; transition:transform 0.2s,box-shadow 0.2s;
+    }
+    .proj-panel-link:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(255,107,43,0.35); }
+    .proj-panel-status {
+      font-size:0.65rem; color:var(--text-dim); letter-spacing:0.05em;
+    }
+
+    @media(max-width:768px) {
+      .projects-grid { grid-template-columns:1fr; }
+      .proj-drawer { width:100vw; top:var(--nav-h); }
+    }
+    /* ── CORNER GLOBE ── */
+    .corner-globe-wrap {
+      position:fixed;
+      top: calc(var(--nav-h) + 12px);
+      right: 16px;
+      width: 200px;
+      height: 200px;
+      pointer-events:none;
+      z-index:2;
+      transition: opacity 0.4s ease;
+      background: transparent;
+    }
+    .globe-inner {
+      position:absolute;
+      top: 10px; left: 10px;
+      width: 180px; height: 180px;
+      clip-path: circle(50% at 50% 50%);
+    }
+    #globe-three-canvas {
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      display:block;
+    }
+    .globe-inner::after {
+      content:'';
+      position:absolute; inset:0;
+      background: radial-gradient(circle at 50% 50%,
+        transparent 48%,
+        rgba(13,13,15,0.55) 65%,
+        rgba(13,13,15,0.92) 80%,
+        var(--bg) 95%
+      );
+      pointer-events:none;
+      z-index:4;
+    }
+    body.light .globe-inner::after {
+      background: radial-gradient(circle at 50% 50%,
+        transparent 48%,
+        rgba(245,242,237,0.55) 65%,
+        rgba(245,242,237,0.92) 80%,
+        var(--bg) 95%
+      );
+    }
+    #globe-sat-canvas {
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      pointer-events:none;
+      z-index:3;
+    }
+    .corner-clock {
+      position:absolute;
+      bottom: -50px;
+      left: 0; right: 0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:0.2rem;
+      pointer-events:none;
+      z-index:5;
+    }
+    .corner-time {
+      display:flex;
+      align-items:baseline;
+      gap:0.1rem;
+      line-height:1;
+    }
+    .corner-num {
+      font-family:'Space Mono',monospace;
+      font-size:0.9rem;
+      font-weight:700;
+      color:var(--accent);
+      letter-spacing:0.05em;
+    }
+    .corner-colon {
+      font-family:'Space Mono',monospace;
+      font-size:0.85rem;
+      font-weight:700;
+      color:var(--accent);
+      opacity:0.55;
+      padding-bottom:0.1rem;
+    }
+    .corner-sub {
+      display:flex;
+      align-items:center;
+      gap:0.3rem;
+    }
+    .corner-ms {
+      font-size:0.5rem;
+      font-family:'Space Mono',monospace;
+      color:var(--text-dim);
+      letter-spacing:0.08em;
+    }
+    .corner-tz {
+      font-size:0.5rem;
+      font-family:'Space Mono',monospace;
+      color:var(--accent);
+      opacity:0.7;
+      letter-spacing:0.07em;
+    }
+    .corner-mode {
+      font-size:0.48rem;
+      font-family:'Space Mono',monospace;
+      color:var(--text-dim);
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+    }
+    @media(max-width:768px) {
+      .corner-globe-wrap { display:none; }
+    }
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-track { background:transparent; }
+    ::-webkit-scrollbar-thumb { background:var(--border-bright);border-radius:4px; }
+    /* RESPONSIVE */
+    @media(max-width:900px) {
+      .about-grid { grid-template-columns:1fr; }
+      .about-photo-card { position:static;max-width:280px;margin:0 auto; }
+      .about-photo-card img,.about-photo-fallback { aspect-ratio:1; }
+    }
+    @media(max-width:768px) {
+      :root { --nav-h:56px; }
+      .top-nav { height:56px;padding:0 1rem; }
+      .nav-logo { font-size:0.9rem; }
+      .nav-btn { padding:0.35rem 0.5rem;font-size:0.52rem; }
+      .nav-btn svg { width:18px!important;height:18px!important; }
+      .home-hero { grid-template-columns:1fr;text-align:center;gap:2rem;padding-top:2rem; }
+      .home-visual { order:-1; }
+      .home-bio { margin:0 auto 2rem; }
+      .home-cta { justify-content:center; }
+      .home-label { justify-content:center; }
+      .home-label::after { display:none; }
+      .profile-img-wrap { width:180px;height:180px; }
+      .home-stats { grid-template-columns:repeat(2,1fr); }
+      .projects-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:480px) {
+      .areas-grid { grid-template-columns:1fr; }
+      .skills-grid { grid-template-columns:1fr 1fr; }
+      .nav-links { gap:0; }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <div class="nav-logo">Chaitanya<span>.</span></div>
+  <div class="nav-links">
+    <button class="nav-btn active" id="nav-home" onclick="showPage('home')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </button>
+    <button class="nav-btn" id="nav-about" onclick="showPage('about')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+      About
+    </button>
+    <a class="nav-btn" href="publications.html">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Pubs
+    </a>
+    <button class="nav-btn" id="nav-projects" onclick="showPage('projects')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Research
+    </button>
+    <a class="nav-btn" href="Contact.html">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Contact
+    </a>
+
+    <!-- Theme toggle -->
+    <label id="theme-toggle-button" title="Toggle light / dark mode">
+      <input type="checkbox" id="toggle">
+      <svg viewBox="0 0 69.667 44" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(3.5 3.5)">
+        <g transform="matrix(1,0,0,1,-3.5,-3.5)">
+          <rect fill="#83cbd8" transform="translate(3.5 3.5)" rx="17.5" height="35" width="60.667" id="container"/>
+        </g>
+        <g transform="translate(2.333 2.333)" id="button">
+          <g id="sun">
+            <g transform="matrix(1,0,0,1,-5.83,-5.83)"><circle fill="#f8e664" transform="translate(5.83 5.83)" r="15.167" cy="15.167" cx="15.167"/></g>
+            <circle fill="#fcf4b9" transform="translate(8.167 8.167)" r="7" cy="7" cx="7"/>
+          </g>
+          <g id="moon">
+            <g transform="matrix(1,0,0,1,-31.5,-5.83)"><circle fill="#cce6ee" transform="translate(31.5 5.83)" r="15.167" cy="15.167" cx="15.167"/></g>
+            <g fill="#a6cad0" transform="translate(-24.415 -1.009)" id="patches">
+              <circle transform="translate(43.009 4.496)" r="2"/><circle transform="translate(39.366 17.952)" r="2"/>
+              <circle transform="translate(33.016 8.044)" r="1"/><circle transform="translate(51.081 18.888)" r="1"/>
+              <circle transform="translate(33.016 22.503)" r="1"/><circle transform="translate(50.081 10.53)" r="1.5"/>
+            </g>
+          </g>
+        </g>
+        <g fill="#def8ff" transform="translate(3.585 1.325)" id="stars">
+          <path transform="matrix(-1,0.017,-0.017,-1,24.231,3.055)" d="M.774,0,.566.559,0,.539.458.933.25,1.492l.485-.361.458.394L1.024.953,1.509.592.943.572Z"/>
+          <path transform="matrix(-0.777,0.629,-0.629,-0.777,23.185,12.358)" d="M1.341.529.836.472.736,0,.505.46,0,.4.4.729l-.231.46L.605.932l.4.326L.9.786Z"/>
+          <path transform="translate(12.677 0.388) rotate(104)" d="M1.161,1.6,1.059,1,1.574.722.962.607.86,0,.613.572,0,.457.446.881.2,1.454l.516-.274Z"/>
+        </g>
+        </g>
+      </svg>
+    </label>
+
+  </div>
+</nav>
+
+<div class="page-wrapper">
+
+<!-- ====== HOME ====== -->
+<section id="page-home" class="page-section active">
+<div class="container">
+  <div class="home-hero">
+    <div>
+      <div class="home-label">PhD Researcher · SAFE Lab · UARK</div>
+      <h1 class="home-name">Chaitanya<br>Kumar Reddy<br><em>Pallerla</em></h1>
+      <div class="home-role">AI · Imaging · Food Systems</div>
+      <p class="home-bio">Building intelligent sensing and vision systems to transform food safety and quality assessment. PhD candidate at the University of Arkansas, fusing hyperspectral imaging, LiDAR, machine learning, and robotics to solve real-world agricultural challenges.</p>
+      <div class="home-cta">
+        <button class="btn-primary" onclick="showPage('projects')">View Research ↗</button>
+        <a class="btn-ghost" href="Contact.html">Get In Touch</a>
+      </div>
+    </div>
+    <div class="home-visual">
+      <div class="profile-ring-wrap">
+        <div class="profile-img-wrap" id="profileWrap">
+          <img src="me.png" alt="Chaitanya Kumar Reddy Pallerla" id="profileImg" onerror="handleImgError()">
+        </div>
+        <div class="profile-ring"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-stats">
+    <div class="home-stat"><span class="home-stat-val">13+</span><span class="home-stat-lbl">Publications</span></div>
+    <div class="home-stat"><span class="home-stat-val">25+</span><span class="home-stat-lbl">Citations</span></div>
+    <div class="home-stat"><span class="home-stat-val">$300k</span><span class="home-stat-lbl">Grant Support</span></div>
+    <div class="home-stat"><span class="home-stat-val">10+</span><span class="home-stat-lbl">Active Projects</span></div>
+  </div>
+
+  <div class="section-label">Research Focus</div>
+  <h2 class="section-title">Core <em>Expertise</em></h2>
+  <div class="areas-grid">
+    <div class="area-card"><div class="area-icon">🔬</div><div class="area-name">Multimodal Sensing</div><div class="area-desc">Hyperspectral, LiDAR, thermal, and transillumination imaging for food quality assessment</div></div>
+    <div class="area-card"><div class="area-icon">🤖</div><div class="area-name">Machine Learning & AI</div><div class="area-desc">NEAT-evolved ensembles, deep learning, NAS-WD architectures for classification and regression</div></div>
+    <div class="area-card"><div class="area-icon">🍗</div><div class="area-name">Poultry Quality</div><div class="area-desc">Woody breast and spaghetti meat myopathy detection in broiler fillets via non-invasive methods</div></div>
+    <div class="area-card"><div class="area-icon">🦾</div><div class="area-name">Robotics & Automation</div><div class="area-desc">Robotic palpation, autonomous pathogen detection, gripper control for bio-products</div></div>
+    <div class="area-card"><div class="area-icon">📱</div><div class="area-name">Mobile AI Systems</div><div class="area-desc">Smartphone-enabled imaging and iOS apps for real-time field deployment of ML models</div></div>
+    <div class="area-card"><div class="area-icon">🌾</div><div class="area-name">Precision Agriculture</div><div class="area-desc">Foreign material detection, rice quality assessment, and sustainable food processing systems</div></div>
+    <div class="area-card"><div class="area-icon">🧬</div><div class="area-name">Biosensing</div><div class="area-desc">Electrochemical biosensors with ML for rapid pathogen detection (E. coli O157:H7)</div></div>
+    <div class="area-card"><div class="area-icon">📊</div><div class="area-name">Data Science</div><div class="area-desc">Synthetic data augmentation, active learning, and statistical modeling for complex datasets</div></div>
+  </div>
+
+  <div class="section-label">Updates</div>
+  <h2 class="section-title">Recent <em>News</em></h2>
+  <div class="news-list">
+    <div class="news-item"><div class="news-date">2026</div><div class="news-text">MyoVision paper submitted to <strong>CVPR MetaFood 2026 Workshop</strong> — NEATBoost-Attention ensemble for real-time myopathy detection</div><div class="news-badge">Under Review</div></div>
+    <div class="news-item"><div class="news-date">2026</div><div class="news-text">ChicGrasp paper published in <strong>Advanced Robotics Research</strong> — imitation learning for delicate bio-product manipulation</div><div class="news-badge">Published</div></div>
+    <div class="news-item"><div class="news-date">2026</div><div class="news-text">Synthetic data augmentation paper accepted in <strong>IEEE Transactions on AgriFood Electronics</strong> (2 citations)</div><div class="news-badge">Published</div></div>
+    <div class="news-item"><div class="news-date">2025</div><div class="news-text">USDA-NIFA covered our <strong>Autonomous Pathogen Detection Rover</strong> project for poultry processing sanitation evaluation</div><div class="news-badge">Press</div></div>
+    <div class="news-item"><div class="news-date">2025</div><div class="news-text">AAFP Conference Poster — <strong>3rd place award</strong> for thermal imaging foreign material detection in poultry</div><div class="news-badge">Award</div></div>
+    <div class="news-item"><div class="news-date">2025</div><div class="news-text">USDA NIFA grant <strong>($299,964)</strong> funded for Robotic Palpation Calibrated Vision System for Woody Breast Evaluation</div><div class="news-badge">Grant</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ====== ABOUT ====== -->
+<section id="page-about" class="page-section">
+<div class="container">
+  <div class="about-hero">
+    <div class="section-label">About Me</div>
+    <h1 class="section-title">The Story<br><em>Behind the Research</em></h1>
+  </div>
+  <div class="about-grid">
+    <div class="about-photo-card">
+      <img src="me.png" alt="Chaitanya Kumar Reddy Pallerla" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="about-photo-fallback" style="display:none">C</div>
+      <div class="about-photo-info">
+        <div class="about-photo-name">Chaitanya Kumar Reddy Pallerla</div>
+        <div class="about-photo-role">PhD Candidate · Food Science</div>
+        <div class="about-photo-affil">University of Arkansas, Fayetteville</div>
+        <div class="about-photo-affil" style="color:var(--accent);font-size:0.62rem;margin-top:0.4rem;">SAFE Lab · Dr. Dongyi Wang</div>
+      </div>
+    </div>
+    <div>
+      <div class="about-section">
+        <h2 class="about-section-title">Background</h2>
+        <p class="about-para">I am a PhD candidate in Food Science at the <strong>University of Arkansas, Fayetteville</strong>, working under <strong>Dr. Dongyi Wang</strong> in the SAFE Lab. My research sits at the intersection of intelligent sensing, multimodal imaging, and machine learning — applied to real-world food quality and safety challenges.</p>
+        <p class="about-para">Before joining UARK, I completed my <strong>B.Tech. in Food Technology</strong> from Dr. NTR College of Food Science and Technology in India (GPA 8.35/10), which gave me a strong foundation in food science principles that now drives my engineering and AI work.</p>
+        <p class="about-para">My PhD journey has evolved from classical ML to building full multimodal pipelines — integrating hyperspectral cameras, LiDAR point clouds, thermal sensors, and transillumination imaging — culminating in systems like <strong>MyoVision</strong> and <strong>Fusion-PointNet</strong> that detect chicken breast myopathies with clinical-grade accuracy in real time.</p>
+      </div>
+      <div class="about-section">
+        <h2 class="about-section-title">Education</h2>
+        <div class="edu-timeline">
+          <div class="edu-item">
+            <div class="edu-dot"></div>
+            <div><div class="edu-degree">PhD Candidate, Food Science</div><div class="edu-school">University of Arkansas, Fayetteville, AR</div><div class="edu-period">Aug 2022 – July 2026 (Expected)</div><div class="edu-detail">Advisor: Dr. Dongyi Wang · SAFE Lab · Expected Summer 2026</div></div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-dot"></div>
+            <div><div class="edu-degree">M.S., Food Science — Earned 2024</div><div class="edu-school">University of Arkansas, Fayetteville, AR</div><div class="edu-period">Aug 2022 – 2024 · GPA: 3.739</div><div class="edu-detail">Thesis: Multimodal sensing for poultry quality assessment</div></div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-dot" style="background:var(--border-bright)"></div>
+            <div><div class="edu-degree">B.Tech., Food Technology</div><div class="edu-school">Dr. NTR College of Food Science and Technology, India</div><div class="edu-period">Jul 2017 – Jul 2021 · GPA: 8.35/10</div><div class="edu-detail">Foundation in food science, processing, and safety principles</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-section">
+        <h2 class="about-section-title">Research Interests</h2>
+        <div class="skills-grid">
+          <div class="skill-chip"><div class="skill-dot"></div>Intelligent Sensing</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Hyperspectral Imaging</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Machine Learning & AI</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Robotics & Automation</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Data-Driven Modeling</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Non-Invasive Detection</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Real-Time Monitoring</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Synthetic Data Generation</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Biosensing Systems</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Non-Thermal Processing</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Mobile AI Deployment</div>
+          <div class="skill-chip"><div class="skill-dot"></div>Sustainable Food Systems</div>
+        </div>
+      </div>
+      <div class="about-section">
+        <h2 class="about-section-title">Technical Stack</h2>
+        <div class="skills-grid">
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>Python / PyTorch</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>TensorFlow / Keras</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>LightGBM / XGBoost</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>NEAT / Neuroevolution</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>OpenCV / PCL</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>Open3D / trimesh</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>MATLAB</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>Flask / REST APIs</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>iOS / Swift</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>HTML / CSS / JS</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>ROS / Robotics</div>
+          <div class="skill-chip"><div class="skill-dot" style="background:#4ecdc4"></div>LaTeX / Overleaf</div>
+        </div>
+      </div>
+      <div class="about-section">
+        <h2 class="about-section-title">Teaching & Service</h2>
+        <div class="award-list">
+          <div class="award-item"><div class="award-year">2023–25</div><div class="award-text">Teaching Assistant — Transport Phenomena in Biological Systems (BENG 3733) & Measure and Control Biological Systems (BENG 3113), UARK</div></div>
+          <div class="award-item"><div class="award-year">Nov 2024</div><div class="award-text">Guest Lecture — "Application of AI and Robotics in Food Systems" for FDSC 10101, University of Arkansas (Instructor: Dr. Jamie I. Baum)</div></div>
+          <div class="award-item"><div class="award-year">Nov 2024</div><div class="award-text">Introduction to Robotics lecture at Haas Hall Academy High School with Dr. Ramesh Bist</div></div>
+          <div class="award-item"><div class="award-year">Oct 2025</div><div class="award-text">Hosted robotics workshop at LionHogTech event</div></div>
+          <div class="award-item"><div class="award-year">Fall 2023</div><div class="award-text">USDA F2OCUS Program — mentoring graduate students from LSU for research report writing</div></div>
+        </div>
+      </div>
+      <div class="about-section">
+        <h2 class="about-section-title">Awards & Press</h2>
+        <div class="award-list">
+          <div class="award-item"><div class="award-year">2025</div><div class="award-text">🏆 AAFP Conference — 3rd place, Poster Presentation (thermal imaging, foreign material detection)</div></div>
+          <div class="award-item"><div class="award-year">2024</div><div class="award-text">🏆 ASABE Annual Meeting — 4th place, Strawberry Harvester Prototype competition</div></div>
+          <div class="award-item"><div class="award-year">2023</div><div class="award-text">🏆 ASABE Annual Meeting — 4th place, Cotton Harvester Prototype competition</div></div>
+          <div class="award-item"><div class="award-year">Mar 2023</div><div class="award-text">📰 University of Arkansas News — "High-Tech Cameras Focused on Chicken Breast Defect Detection" [The Poultry Site]</div></div>
+          <div class="award-item"><div class="award-year">Dec 2025</div><div class="award-text">📰 USDA-NIFA News — "Autonomous Pathogen Detection Rover Developed to Evaluate Sanitation Effectiveness in Poultry Processing Facilities"</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ====== PROJECTS ====== -->
+<section id="page-projects" class="page-section">
+<div class="container">
+  <div class="projects-hero">
+    <div class="section-label">Research Portfolio</div>
+    <h1 class="section-title">Active <em>Projects</em></h1>
+    <p style="font-size:0.78rem;color:var(--text-muted);max-width:500px;line-height:1.75;margin-bottom:0.5rem">Click any project card to explore its 3D model and full research details.</p>
+  </div>
+  <div class="projects-filter">
+    <span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);align-self:center">Filter:</span>
+    <button class="pf-btn active" onclick="filterProjects('all',this)">All</button>
+    <button class="pf-btn" onclick="filterProjects('imaging',this)">Imaging</button>
+    <button class="pf-btn" onclick="filterProjects('ml',this)">ML / AI</button>
+    <button class="pf-btn" onclick="filterProjects('spectral',this)">Spectral</button>
+    <button class="pf-btn" onclick="filterProjects('robotics',this)">Robotics</button>
+    <button class="pf-btn" onclick="filterProjects('agriculture',this)">Agriculture</button>
+    <button class="pf-btn" onclick="filterProjects('published',this)">Published</button>
+  </div>
+  <div class="projects-grid" id="projectsGrid"></div>
+</div>
+</section>
+
+<!-- ── Drawer overlay ── -->
+<div class="proj-drawer-overlay" id="drawerOverlay"></div>
+
+<!-- ── Sliding drawer panel ── -->
+<div class="proj-drawer" id="projDrawer">
+  <div class="drawer-header">
+    <span class="drawer-header-title" id="drawerLabel">Project Details</span>
+    <button class="drawer-close" id="drawerClose" title="Close">×</button>
+  </div>
+  <div class="drawer-body" id="drawerBody">
+    <!-- Viewer slots — hidden by default, shown per project -->
+    <!-- Project 1: NAS-WD / Hyperspectral regression — breast fillet 3D scan -->
+    <div id="viewer-1" class="sketchfab-viewer-wrap">
+      <iframe title="Breast Fillet 3D Scan" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/dfe0cac60480470a862bd4e50d1678b7"><span>Click to interact</span></div>
+    </div>
+    <!-- Project 2: Thermal plastic detection — FLIR thermal camera -->
+    <div id="viewer-2" class="sketchfab-viewer-wrap">
+      <iframe title="FLIR Thermal Camera" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/thermal-camera-0de70ea2c53e4a9b81cda39b40e75a4a"><span>Click to interact</span></div>
+    </div>
+    <!-- Project 3: MyoVision transillumination -->
+    <div id="viewer-3" class="sketchfab-viewer-wrap">
+      <iframe title="Transillumination Setup" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/tranillumination-setup-7bd4dff4aba54fd29113856ce43d72aa"><span>Click to interact</span></div>
+    </div>
+    <!-- Project 4: SparkFun multispectral sensor -->
+    <div id="viewer-4" class="sketchfab-viewer-wrap">
+      <iframe title="SparkFun AS7265x Sensor" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/spark-fun-sensor-7c2ca34defe5401ebbd8237dd9e370b0"><span>Click to interact</span></div>
+    </div>
+    <!-- Project 5: TACTUS tactile array — UR5 robotic arm -->
+    <div id="viewer-5" class="sketchfab-viewer-wrap">
+      <iframe title="UR5" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/ur5-de012f34e28541c2afcb43d8f71faa24"><span>Click to interact</span></div>
+    </div>
+    <!-- Project 6: HSI + TSS correlation — blackberries 3D model -->
+    <div id="viewer-6" class="sketchfab-viewer-wrap">
+      <iframe title="(Free) Realistic Blackberries" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/free-realistic-blackberries-343aa2dddbbc43b6bf7cea90a595e6e5"><span>Click to interact</span></div>
+    </div>
+    <!-- Project 7: HSI microorganism classification — virus 3D model -->
+    <div id="viewer-7" class="sketchfab-viewer-wrap">
+      <iframe title="Virus" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/virus-af9e379a2c974943881524010c36e0e6"><span>Click to interact</span></div>
+    </div>
+    <!-- Project 8: Rice chalkiness HSI — rice 3D model -->
+    <div id="viewer-8" class="sketchfab-viewer-wrap">
+      <iframe title="Rice with Shell" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/rice-with-shell-84d49dc0a9214b17ad48eda985f80dea"><span>Click to interact</span></div>
+    </div>
+    <!-- Project 9: SPIDER hexapod field robot — hexapod 3D model -->
+    <div id="viewer-9" class="sketchfab-viewer-wrap">
+      <iframe title="Hexapod" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/hexapod-29fef52408fc46c29c41048353610f10"><span>Click to interact</span></div>
+    </div>
+    <!-- Project 10: HUSKY UGV navigation & swabbing — Husky 3D model -->
+    <div id="viewer-10" class="sketchfab-viewer-wrap">
+      <iframe title="Husky" allow="autoplay; fullscreen; xr-spatial-tracking" src="about:blank"></iframe>
+      <div class="viewer-click-overlay" data-url="https://sketchfab.com/3d-models/husky-2140bf9857db4281ad5e3d75501ef666"><span>Click to interact</span></div>
+    </div>
+
+    <!-- Text content injected per project -->
+    <div id="drawerContent"></div>
+  </div>
+</div>
+
+<!-- Globe widget -->
+<div class="corner-globe-wrap" id="globeWrap">
+  <div class="globe-inner">
+    <canvas id="globe-three-canvas"></canvas>
+  </div>
+  <canvas id="globe-sat-canvas"></canvas>
+  <div class="corner-clock">
+    <div class="corner-time">
+      <span class="corner-num" id="gch">00</span>
+      <span class="corner-colon">:</span>
+      <span class="corner-num" id="gcm">00</span>
+      <span class="corner-colon">:</span>
+      <span class="corner-num" id="gcs">00</span>
+    </div>
+    <div class="corner-sub">
+      <span class="corner-ms" id="gcms">000 ms</span>
+      <span class="corner-tz" id="gtz">UTC</span>
+      <span class="corner-mode" id="gmode">Day</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page-wrapper -->
+
+<script>
+// Theme
+const toggle = document.getElementById('toggle');
+const saved = localStorage.getItem('theme');
+const preferLight = saved !== null ? saved === 'light' : (new Date().getHours() >= 6 && new Date().getHours() < 20);
+if (preferLight) { document.body.classList.add('light'); toggle.checked = true; }
+toggle.addEventListener('change', () => {
+  const isLight = toggle.checked;
+  document.body.classList.toggle('light', isLight);
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Profile fallback
+function handleImgError() {
+  const wrap = document.getElementById('profileWrap');
+  const img = document.getElementById('profileImg');
+  img.style.display = 'none';
+  const fb = document.createElement('div');
+  fb.className = 'profile-fallback';
+  fb.textContent = 'C';
+  wrap.appendChild(fb);
+}
+
+// Page navigation
+function showPage(name) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  const btn = document.getElementById('nav-' + name);
+  if (btn) btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ════════════════════════════════════════
+// PROJECTS DATA — 5 real research projects
+// ════════════════════════════════════════
+
+const SKETCHFAB_UIDS = {
+  1: 'dfe0cac60480470a862bd4e50d1678b7',   // Breast fillet 3D scan
+  2: '0de70ea2c53e4a9b81cda39b40e75a4a',   // FLIR thermal camera
+  3: '7bd4dff4aba54fd29113856ce43d72aa',   // Transillumination setup
+  4: '7c2ca34defe5401ebbd8237dd9e370b0',   // SparkFun sensor
+  5: 'de012f34e28541c2afcb43d8f71faa24',   // UR5 robotic arm
+  6: '343aa2dddbbc43b6bf7cea90a595e6e5',   // Realistic Blackberries
+  7: 'af9e379a2c974943881524010c36e0e6',   // Virus
+  8: '84d49dc0a9214b17ad48eda985f80dea',   // Rice with shell
+  9: '29fef52408fc46c29c41048353610f10',   // Hexapod
+  10: '2140bf9857db4281ad5e3d75501ef666',  // Husky UGV
+};
+
+function sketchfabURL(uid) {
+  return `https://sketchfab.com/models/${uid}/embed?autostart=1&autospin=0.3&transparent=1&ui_watermark=0&ui_infos=0&ui_controls=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0&ui_stop=0&preload=1`;
+}
+
+const PROJECTS = [
+  {
+    id: 1,
+    img: 'Project1.png',
+    icon: '📈',
+    thumbScale: 0.95,
+    tags: ['imaging', 'ml', 'spectral', 'published'],
+    badge: 'Published · 2024 · IF 12.4',
+    title: 'NAS-WD: Neural Architecture Search for Woody Breast',
+    desc: 'Hyperspectral imaging combined with a NAS-optimized Wide-Deep Learning model for simultaneous classification of woody breast severity and regression of hardness (compression force) values — tackling the spatially heterogeneous nature of the myopathy.',
+    chips: ['NAS', 'Wide-Deep Learning', 'Hyperspectral', 'Hardness Regression', 'Classification'],
+    highlights: [
+      'NAS-optimized architecture balancing wide & deep subnetworks for spectral data',
+      'Simultaneous hardness (compression force) regression + three-class categorical classification',
+      'Spatial heterogeneity-aware training strategy across cranial, medial, and caudal fillet regions',
+      'Published in Artificial Intelligence in Agriculture (IF 12.4)',
+      'Establishes spectral-mechanical correlation baseline for poultry myopathy research'
+    ],
+    status: 'Artificial Intelligence in Agriculture · 2024',
+    link: 'https://doi.org/10.1016/j.aiia.2024.11.003'
+  },
+  {
+    id: 2,
+    img: 'Project2.png',
+    icon: '🌡️',
+    thumbScale: 0.95,
+    tags: ['imaging', 'ml', 'published'],
+    badge: 'Published · 2025 · IF 8.0',
+    title: 'Thermal Imaging + FEA for Transparent Plastic Detection',
+    desc: 'A FLIR thermal camera combined with Finite Element Analysis (FEA) simulation to detect transparent plastic contaminants embedded in chicken breast fillets — targeting a critical food safety gap invisible to standard machine vision systems.',
+    chips: ['Thermal Imaging', 'FEA Simulation', 'FLIR', 'Contaminant Detection', 'Food Safety'],
+    highlights: [
+      'First combined thermal + FEA pipeline for transparent plastic detection in poultry',
+      'Detects contaminants invisible to RGB and standard near-infrared vision systems',
+      'FEA used to model thermal diffusion signatures of embedded foreign bodies',
+      'Validated under industrial processing line temperature and lighting conditions',
+      'Published in Food Research International (IF 8.0)'
+    ],
+    status: 'Food Research International · 2025',
+    link: 'https://doi.org/10.1016/j.foodres.2025.117993'
+  },
+  {
+    id: 3,
+    img: 'Project3.png',
+    icon: '📱',
+    thumbScale: 0.95,
+    tags: ['imaging', 'ml', 'published'],
+    badge: 'Under Review · COMPAG 2026',
+    title: 'MyoVision: Smartphone Transillumination for Myopathy Grading',
+    desc: 'Smartphone-enabled transillumination imaging leveraging iPhone TrueDepth and LiDAR sensors with a NEATBoost-Attention ensemble for real-time, on-device three-class severity grading of woody breast and spaghetti meat — no lab equipment required.',
+    chips: ['iOS App', 'Transillumination', 'NEAT', 'LightGBM', 'AttentionMLP', 'LiDAR'],
+    highlights: [
+      'Dual-mode depth acquisition: iPhone TrueDepth structured light + LiDAR scanner',
+      'NEATBoost-Attention ensemble with Nelder-Mead probability fusion',
+      'Classifies normal, woody breast, and spaghetti meat in real time on-device',
+      'No cloud dependency — full inference pipeline runs in CoreML on iPhone',
+      'Under Review in Computers and Electronics in Agriculture (COMPAG) · preview: SSRN'
+    ],
+    status: 'Under Review · Computers & Electronics in Agriculture',
+    link: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6352005'
+  },
+  {
+    id: 4,
+    img: 'Project4.png',
+    icon: '📡',
+    tags: ['spectral', 'ml'],
+    badge: 'Manuscript in Progress · 2026',
+    title: 'Low-Cost Multispectral Sensing with SparkFun AS7265x',
+    desc: 'Evaluates the $70 SparkFun AS7265x 18-channel multispectral sensor (410–940 nm) as a viable, factory-calibrated alternative to expensive hyperspectral systems for three-class woody breast severity classification in broiler breast fillets.',
+    chips: ['AS7265x', 'Multispectral', '18-Channel NIR', 'Random Forest', 'Low-Cost Sensing'],
+    highlights: [
+      '178 broiler breast fillets measured at multiple anatomical regions with repeated reads averaged for stability',
+      'Statistical analysis identified 14 of 18 bands as significant; strongest separation in NIR (680–940 nm)',
+      'Random Forest achieved 92% three-class test accuracy — competitive with full hyperspectral models',
+      'Spectral signatures captured: pigment variation, fibrosis-related scattering, altered water binding',
+      'Sensor costs ~$70 vs. $20,000–$200,000 for research-grade HSI systems — a >99% cost reduction'
+    ],
+    status: 'Manuscript in Preparation · 2026',
+    link: 'https://scholar.google.com/citations?user=JYL8F98AAAAJ'
+  },
+  {
+    id: 5,
+    img: 'Project5.png',
+    icon: '🤚',
+    thumbScale: 0.95,
+    tags: ['robotics', 'imaging', 'ml'],
+    badge: 'Ongoing · 2026–2027',
+    title: 'TACTUS: Tactile Adaptive 3D Sensing Array for Woody Breast',
+    desc: 'A Hybrid Adaptive Bump Force Pad with independently actuated sensor bumps that conform to irregular fillet topography, simultaneously recording distributed forces and surface depth to generate 3D hardness maps of spatially heterogeneous woody breast tissue.',
+    chips: ['Tactile Sensing', 'Force Mapping', '3D Hardness Map', 'Shape-Adaptive', 'Piezoresistive'],
+    highlights: [
+      'Array of independently actuated bumps conforming to irregular chicken fillet surfaces for full contact',
+      'Simultaneous distributed force measurement + depth acquisition — first system combining both',
+      'Generates 3D spatial hardness maps revealing patchy stiffness zones characteristic of woody breast',
+      'Addresses the key limitation of destructive localized tests (MORS, compression force) that miss spatial heterogeneity',
+      'Targets mild woody breast where internal stiffness is invisible on the surface — the hardest detection case'
+    ],
+    status: 'Manuscript in Preparation · 2026',
+    link: 'https://scholar.google.com/citations?user=JYL8F98AAAAJ'
+  },
+  {
+    id: 6,
+    img: 'Project6.png',
+    icon: '🍬',
+    tags: ['imaging', 'spectral', 'agriculture'],
+    badge: 'Ongoing · 2026–2027',
+    title: 'HSI Spectral Correlation with Total Soluble Solids (TSS)',
+    desc: 'Hyperspectral imaging (400–1000 nm) to non-destructively predict and map Total Soluble Solids (TSS/Brix) content in agricultural produce — establishing direct spectral–chemical correlations to replace destructive refractometry.',
+    chips: ['Hyperspectral', '400–1000 nm', 'TSS / Brix', 'Spectral Correlation', 'Non-Destructive'],
+    highlights: [
+      'Full-range VNIR HSI (400–1000 nm) captures sugar-linked absorption features around 680, 760, and 970 nm',
+      'Chemometric modeling (PLS, SVR, CNN) correlates pixel-level reflectance to refractometer Brix ground truth',
+      'Generates spatial TSS distribution maps revealing intra-sample sugar heterogeneity',
+      'Targets scalable, inline quality grading without destructive sampling',
+      'Ongoing study — sensor characterization and calibration phase in progress'
+    ],
+    status: 'Ongoing · Data Collection & Modeling Phase',
+    link: 'https://scholar.google.com/citations?user=JYL8F98AAAAJ'
+  },
+  {
+    id: 7,
+    img: 'Project71.png',
+    icon: '🧫',
+    tags: ['imaging', 'spectral', 'ml', 'agriculture'],
+    badge: 'Manuscript in Progress · 2026',
+    title: 'NEAT-Waveform: HSI Microorganism Classification',
+    desc: 'Full-range hyperspectral imaging (400–1700 nm, VNIR + SWIR) combined with a novel NEAT-Waveform model — using neuro-evolution to discover optimal spectral waveform features — for accurate multi-class microbial identification on food surfaces.',
+    chips: ['HSI 400–1700 nm', 'NEAT-Waveform', 'Microorganisms', 'SWIR', 'Neuroevolution'],
+    highlights: [
+      'Full VNIR+SWIR coverage (400–1700 nm) captures both surface color and deep molecular absorption bands',
+      'NEAT-Waveform model: neuro-evolution discovers discriminative spectral waveform shape features automatically',
+      'Achieved 95% classification accuracy across multiple microorganism classes — best-performing model',
+      'Non-contact, non-destructive detection without culture media or reagents',
+      'Manuscript in preparation — model architecture and ablation study being finalized'
+    ],
+    status: 'Manuscript in Preparation · 2026',
+    link: 'https://scholar.google.com/citations?user=JYL8F98AAAAJ'
+  },
+  {
+    id: 8,
+    img: 'Project8.png',
+    icon: '🌾',
+    tags: ['imaging', 'spectral', 'ml', 'agriculture', 'published'],
+    badge: 'Major Revision Done · ASABE',
+    title: 'Rice Chalkiness Classification via HSI and Stacking ML',
+    desc: 'Non-invasive hyperspectral imaging (400–1000 nm) combined with a Stacking Random Forest Meta-Model (SFRM) to classify chalkiness severity (low / moderate / high) in both rough and brown rice — achieving up to 96.96% accuracy for brown rice.',
+    chips: ['HSI 400–1000 nm', 'SFRM', 'Rice Quality', 'Chalkiness', 'SVM', 'MLP'],
+    highlights: [
+      '162 fused hyperspectral + imaging samples of rough and brown rice at three chalkiness severity levels',
+      'SFRM (Stacking Random Forest Meta-Model) outperformed SVM and MLP: 87.8% rough rice, 96.96% brown rice',
+      'ANOVA + Tukey HSD confirmed significant reflectance differences across all chalkiness categories',
+      'Higher chalkiness correlated with higher mean reflectance — air pockets in starch disrupt light transmission',
+      'Major revision completed and resubmitted to ASABE Transactions of the ASABE'
+    ],
+    status: 'Major Revision Completed · ASABE Transactions',
+    link: 'https://scholar.google.com/citations?user=JYL8F98AAAAJ'
+  },
+  {
+    id: 9,
+    img: 'Project9.png',
+    icon: '🕷️',
+    thumbScale: 0.95,
+    tags: ['robotics', 'imaging', 'agriculture'],
+    badge: 'Ongoing · 2025–2026',
+    title: 'SPIDER: Sensing Platform for Intelligent Data-collection and Environmental Reconnaissance',
+    desc: 'A hexapod robot with a mounted sensor arm designed for autonomous field survey and multimodal data collection in agricultural environments — combining legged locomotion for terrain adaptability with onboard imaging and spectral sensing.',
+    chips: ['Hexapod', 'Field Robotics', 'Sensor Arm', 'Autonomous Survey', 'Multimodal Sensing'],
+    highlights: [
+      'Six-legged locomotion enables stable traversal over uneven field terrain where wheeled platforms fail',
+      'Articulated sensor arm extends reach for close-range imaging, spectral, and depth data acquisition',
+      'Onboard multimodal payload: RGB, hyperspectral, and depth sensors for comprehensive field mapping',
+      'Designed for crop scouting, soil surface inspection, and targeted sample collection',
+      'Ongoing — locomotion control, sensor integration, and field trial protocols in development'
+    ],
+    status: 'Ongoing · Platform Development & Field Trials',
+    link: 'https://scholar.google.com/citations?user=JYL8F98AAAAJ'
+  },
+  {
+    id: 10,
+    img: 'Project10.png',
+    icon: '🚜',
+    tags: ['robotics', 'imaging', 'ml'],
+    badge: 'Ongoing · 2026–2027',
+    title: 'Clearpath Husky UGV: Autonomous Navigation & Biosafety Mapping',
+    desc: 'Automating a Clearpath Husky UGV for indoor poultry processing facility navigation using fused 2D image and 3D point cloud (PLY) inputs — ultimately deploying it as an autonomous swabbing robot that generates spatial biosafety maps of surface contamination.',
+    chips: ['Husky UGV', '2D + 3D Fusion', 'ROS', 'Autonomous Navigation', 'Swabbing', 'Biosafety Map'],
+    highlights: [
+      'Dual-modality navigation: 2D camera feed + 3D LiDAR/PLY point cloud fused for robust indoor path planning',
+      'ROS-based autonomy stack with obstacle avoidance for constrained wet-processing facility environments',
+      'End goal: autonomous swabbing of food-contact surfaces following planned sanitation inspection routes',
+      'Swab results georeferenced to facility floor map to produce quantitative spatial biosafety contamination maps',
+      'Ongoing — navigation pipeline being validated; swabbing end-effector integration in progress'
+    ],
+    status: 'Ongoing · Navigation & Swabbing Integration',
+    link: 'https://scholar.google.com/citations?user=JYL8F98AAAAJ'
+  }
+];
+
+/* Render grid */
+function renderProjects(filter) {
+  const grid = document.getElementById('projectsGrid');
+  const list = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.tags.includes(filter));
+  grid.innerHTML = '';
+  list.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'proj-card';
+    card.dataset.id = p.id;
+    card.style.cssText = `opacity:0;animation:pageFadeIn 0.4s ease ${i*0.07}s forwards`;
+    const imgStyle = p.thumbScale
+      ? `style="object-fit:contain;transform:scale(${p.thumbScale});transition:transform 0.4s ease"`
+      : `style="transition:transform 0.4s ease"`;
+    card.innerHTML = `
+      <div class="proj-thumb">
+        <img src="${p.img}" alt="${p.title}" ${imgStyle} onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="proj-thumb-fallback" style="display:none">${p.icon}</div>
+        <span class="proj-thumb-badge">${p.badge}</span>
+        <span class="proj-open-hint">Explore →</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-tags">${p.chips.slice(0,4).map(t=>`<span class="proj-tag">${t}</span>`).join('')}</div>
+        <div class="proj-title">${p.title}</div>
+        <div class="proj-desc">${p.desc}</div>
+        <div class="proj-footer">
+          <div class="proj-status">${p.status}</div>
+          <span class="proj-link">Details ↗</span>
+        </div>
+      </div>`;
+    card.addEventListener('click', () => openDrawer(p.id));
+    grid.appendChild(card);
+  });
+}
+
+function filterProjects(filter, btn) {
+  document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  closeDrawer();
+  renderProjects(filter);
+}
+
+/* Drawer logic */
+const drawer = document.getElementById('projDrawer');
+const overlay = document.getElementById('drawerOverlay');
+const drawerContent = document.getElementById('drawerContent');
+const drawerLabel = document.getElementById('drawerLabel');
+let activeDrawerId = null;
+
+function openDrawer(id) {
+  if (activeDrawerId === id) { closeDrawer(); return; }
+  activeDrawerId = id;
+
+  document.querySelectorAll('.proj-card').forEach(c => c.classList.remove('active-card'));
+  const activeCard = document.querySelector(`.proj-card[data-id="${id}"]`);
+  if (activeCard) activeCard.classList.add('active-card');
+
+  // hide all viewers
+  document.querySelectorAll('.sketchfab-viewer-wrap, .no-viewer-thumb').forEach(v => v.style.display = 'none');
+
+  // show viewer for this project
+  const viewerEl = document.getElementById('viewer-' + id);
+  if (viewerEl) {
+    if (viewerEl.classList.contains('sketchfab-viewer-wrap')) {
+      const iframe = viewerEl.querySelector('iframe');
+      if (iframe && (!iframe.src || iframe.src === 'about:blank' || iframe.src === window.location.href)) {
+        iframe.src = sketchfabURL(SKETCHFAB_UIDS[id]);
+        iframe.addEventListener('load', () => viewerEl.classList.add('loaded'), { once: true });
+      }
+      viewerEl.style.display = 'block';
+    } else {
+      viewerEl.style.display = 'flex';
+    }
+  }
+
+  const p = PROJECTS.find(x => x.id === id);
+  drawerLabel.textContent = `Project ${String(id).padStart(2,'0')} of ${PROJECTS.length}`;
+
+  // determine link label
+  const linkLabel = p.link.includes('ssrn') ? 'Read Preprint ↗' :
+                    p.link.includes('scholar') ? 'Google Scholar ↗' : 'View Paper ↗';
+
+  drawerContent.innerHTML = `
+    <div class="proj-panel-badge">${p.badge}</div>
+    <div class="proj-panel-title">${p.title}</div>
+    <div class="proj-panel-desc">${p.desc}</div>
+    <div class="proj-panel-chips">${p.chips.map(c=>`<span class="proj-panel-chip">${c}</span>`).join('')}</div>
+    <div class="proj-panel-highlights">${p.highlights.map(h=>`<div class="proj-panel-hl">${h}</div>`).join('')}</div>
+    <div class="proj-panel-actions">
+      <a class="proj-panel-link" href="${p.link}" target="_blank" rel="noopener">${linkLabel}</a>
+      <span class="proj-panel-status">${p.status}</span>
+    </div>`;
+
+  drawer.classList.add('open');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  document.querySelectorAll('.proj-card').forEach(c => c.classList.remove('active-card'));
+  activeDrawerId = null;
+}
+
+document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+document.querySelectorAll('.viewer-click-overlay').forEach(ov => {
+  ov.addEventListener('click', e => {
+    e.stopPropagation();
+    window.open(ov.dataset.url, '_blank', 'noopener');
+  });
+});
+
+renderProjects('all');
+
+// Auto-navigate if ?page= param present
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const p = params.get('page');
+  if (p && document.getElementById('page-' + p)) showPage(p);
+})();
+</script>
+
+<!-- Three.js Globe -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const wrap   = document.getElementById('globeWrap');
+  const tCanvas= document.getElementById('globe-three-canvas');
+  const sCanvas= document.getElementById('globe-sat-canvas');
+  if(!wrap||!tCanvas||!sCanvas) return;
+  const sc = sCanvas.getContext('2d');
+
+  function isDayMode(){ return new Date().getHours()>=6 && new Date().getHours()<20; }
+  let isDay=isDayMode(), pageActive=true;
+
+  const origShow=window.showPage;
+  window.showPage=function(n){
+    origShow(n);
+    pageActive=(n==='home');
+    wrap.style.opacity=pageActive?'1':'0';
+    wrap.style.pointerEvents='none';
+  };
+
+  const renderer=new THREE.WebGLRenderer({canvas:tCanvas,antialias:true,alpha:true,premultipliedAlpha:false});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setClearColor(0x000000,0);
+  renderer.autoClear=true;
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(40,1,0.1,100);
+  camera.position.set(0,0,2.85);
+
+  const inner = wrap.querySelector('.globe-inner');
+
+  function resize(){
+    const w=inner.clientWidth||180, h=inner.clientHeight||180;
+    renderer.setSize(w,h,false);
+    camera.aspect=w/h; camera.updateProjectionMatrix();
+    sCanvas.width=wrap.clientWidth||200;
+    sCanvas.height=wrap.clientHeight||200;
+  }
+  resize();
+  new ResizeObserver(resize).observe(wrap);
+
+  scene.add(new THREE.AmbientLight(0xffffff,0.72));
+  const fill=new THREE.DirectionalLight(0xffeedd,0.30);
+  fill.position.set(-3,1,4); scene.add(fill);
+  const rim=new THREE.DirectionalLight(0x220800,0.12);
+  rim.position.set(3,-1,-3); scene.add(rim);
+
+  function applyOrangeTint(tex){
+    const img=tex.image;
+    const c=document.createElement('canvas');
+    c.width=Math.min(img.width||1024,1024);
+    c.height=Math.min(img.height||512,512);
+    const cx=c.getContext('2d');
+    cx.drawImage(img,0,0,c.width,c.height);
+    const id=cx.getImageData(0,0,c.width,c.height),d=id.data;
+    for(let i=0;i<d.length;i+=4){
+      const r=d[i]/255,g=d[i+1]/255,b=d[i+2]/255;
+      const L=0.299*r+0.587*g+0.114*b;
+      const isOcean=(b>r+0.05 && b>g-0.03 && b>0.25);
+      if(isOcean){
+        const v=L*0.15;
+        d[i]=Math.round(v*255+3); d[i+1]=Math.round(v*200+2); d[i+2]=Math.round(v*150);
+      } else {
+        const v=Math.pow(L,0.7);
+        d[i]  =Math.min(255,Math.round(v*250+5));
+        d[i+1]=Math.min(255,Math.round(v*110));
+        d[i+2]=Math.min(255,Math.round(v*18));
+      }
+    }
+    cx.putImageData(id,0,0);
+    return new THREE.CanvasTexture(c);
+  }
+
+  let earthMesh=null,atmMesh=null,bumpTex=null,satAngle=0;
+
+  function buildEarth(dayTex,bump){
+    if(earthMesh){scene.remove(earthMesh);earthMesh.material.dispose();}
+    if(atmMesh){scene.remove(atmMesh);atmMesh.material.dispose();}
+    earthMesh=new THREE.Mesh(new THREE.SphereGeometry(1,64,64),
+      new THREE.MeshLambertMaterial({map:dayTex||null,bumpMap:bump||null,bumpScale:bump?0.04:0}));
+    scene.add(earthMesh);
+    atmMesh=new THREE.Mesh(new THREE.SphereGeometry(1.028,64,64),
+      new THREE.MeshLambertMaterial({color:0xff6b2b,transparent:true,opacity:0.06,side:THREE.FrontSide,depthWrite:false}));
+    scene.add(atmMesh);
+  }
+  buildEarth(null,null);
+
+  const loader=new THREE.TextureLoader(); loader.crossOrigin='anonymous';
+  const BASE='https://unpkg.com/three-globe/example/img/';
+  loader.load(BASE+'earth-blue-marble.jpg',
+    t=>{ buildEarth(applyOrangeTint(t),bumpTex); },undefined,()=>{ buildEarth(null,bumpTex); });
+  loader.load(BASE+'earth-topology.png',
+    t=>{ bumpTex=t; if(earthMesh){earthMesh.material.bumpMap=t;earthMesh.material.bumpScale=0.04;earthMesh.material.needsUpdate=true;} },undefined,()=>{});
+
+  const SAT_R=1.46,TILT=28*Math.PI/180;
+  function sPos(a){return{x:SAT_R*Math.cos(a),y:SAT_R*Math.sin(a)*Math.sin(TILT),z:SAT_R*Math.sin(a)*Math.cos(TILT)};}
+  function proj(x,y,z){
+    const v=new THREE.Vector3(x,y,z).project(camera);
+    const iw=inner.clientWidth||180, ih=inner.clientHeight||180;
+    const ox=10, oy=10;
+    return{ x: ox + (v.x+1)/2*iw, y: oy + (-v.y+1)/2*ih, behind:v.z>1 };
+  }
+
+  function drawSat(a){
+    sc.clearRect(0,0,sCanvas.width,sCanvas.height);
+    sc.save(); sc.strokeStyle='rgba(255,107,43,0.2)'; sc.lineWidth=0.7; sc.setLineDash([3,6]);
+    sc.beginPath(); let first=true;
+    for(let i=0;i<=120;i++){
+      const p=sPos((i/120)*Math.PI*2),q=proj(p.x,p.y,p.z);
+      if(q.behind){first=true;continue;}
+      first?(sc.moveTo(q.x,q.y),first=false):sc.lineTo(q.x,q.y);
+    }
+    sc.stroke(); sc.setLineDash([]); sc.restore();
+    for(let i=24;i>0;i--){
+      const p=sPos(a-i*0.016),q=proj(p.x,p.y,p.z);
+      if(q.behind)continue;
+      sc.beginPath();sc.arc(q.x,q.y,1.1,0,Math.PI*2);
+      sc.fillStyle=`rgba(255,107,43,${(1-i/24)*0.4})`;sc.fill();
+    }
+    const cp=sPos(a),cq=proj(cp.x,cp.y,cp.z); if(cq.behind)return;
+    const np=sPos(a+0.05),nq=proj(np.x,np.y,np.z);
+    const ang=Math.atan2(nq.y-cq.y,nq.x-cq.x),ps=8;
+    sc.save(); sc.translate(cq.x,cq.y); sc.rotate(ang);
+    sc.fillStyle='#cc5518'; sc.strokeStyle='rgba(255,107,43,0.5)'; sc.lineWidth=0.6;
+    sc.beginPath(); if(sc.roundRect)sc.roundRect(-4.5,-2.8,9,5.6,1.2);else sc.rect(-4.5,-2.8,9,5.6);
+    sc.fill(); sc.stroke();
+    [-(ps+4),(ps+4)].forEach(px=>{
+      sc.fillStyle='#7a2a05'; sc.strokeStyle='rgba(255,107,43,0.3)'; sc.lineWidth=0.5;
+      sc.beginPath(); sc.rect(px<0?px-ps:px,-2.2,ps,4.4); sc.fill(); sc.stroke();
+      sc.strokeStyle='rgba(255,150,60,0.35)'; sc.lineWidth=0.4;
+      for(let k=1;k<3;k++){const lx=px<0?px-ps+k*(ps/3):px+k*(ps/3);sc.beginPath();sc.moveTo(lx,-2.2);sc.lineTo(lx,2.2);sc.stroke();}
+    });
+    sc.fillStyle='#ff9944'; sc.beginPath(); sc.arc(0,0,1.8,0,Math.PI*2); sc.fill();
+    sc.restore();
+  }
+
+  function pad(n){return String(n).padStart(2,'0');}
+  let lastH=-1;
+  function tick(){
+    const now=new Date();
+    const ids=['gch','gcm','gcs'];
+    const vals=[now.getHours(),now.getMinutes(),now.getSeconds()];
+    ids.forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=pad(vals[i]);});
+    const ms=document.getElementById('gcms');if(ms)ms.textContent=String(now.getMilliseconds()).padStart(3,'0')+' ms';
+    try{const tz=document.getElementById('gtz');if(tz)tz.textContent=Intl.DateTimeFormat().resolvedOptions().timeZone||'UTC';}catch(e){}
+    const h=now.getHours();
+    if(h!==lastH){lastH=h;isDay=isDayMode();const m=document.getElementById('gmode');if(m)m.textContent=isDay?'Day':'Night';fill.intensity=isDay?0.30:0.12;}
+  }
+
+  function animate(){
+    requestAnimationFrame(animate);
+    tick();
+    if(!pageActive)return;
+    if(earthMesh)earthMesh.rotation.y+=0.0014;
+    satAngle+=0.009;
+    renderer.render(scene,camera);
+    drawSat(satAngle);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>

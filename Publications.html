@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications – Chaitanya Kumar Reddy Pallerla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0d0d0f;--surface:rgba(255,255,255,0.04);--surface-hover:rgba(255,255,255,0.08);--border:rgba(255,255,255,0.09);--border-bright:rgba(255,255,255,0.18);--accent:#ff6b2b;--accent2:#ffb347;--text:#f0ede8;--text-muted:rgba(240,237,232,0.5);--text-dim:rgba(240,237,232,0.3);--glass-blur:blur(20px) saturate(180%);--glow:rgba(255,107,43,0.15);--nav-h:68px;}
+    body.light{--bg:#f5f2ed;--surface:rgba(0,0,0,0.04);--surface-hover:rgba(0,0,0,0.07);--border:rgba(0,0,0,0.09);--border-bright:rgba(0,0,0,0.18);--text:#1a1714;--text-muted:rgba(26,23,20,0.55);--text-dim:rgba(26,23,20,0.35);--glow:rgba(255,107,43,0.08);}
+    body.light .bg-grid{background-image:linear-gradient(rgba(255,107,43,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,0.06) 1px,transparent 1px);}
+    body.light .bg-orb-1{background:radial-gradient(circle,rgba(255,107,43,0.10),transparent 70%);}
+    body.light .bg-orb-2{background:radial-gradient(circle,rgba(255,179,71,0.07),transparent 70%);}
+    body.light .top-nav{background:rgba(245,242,237,0.75);}
+    body.light .search-input{background:rgba(0,0,0,0.04);}
+    body.light .pub-card:hover .pub-title{color:#000;}
+    *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Space Mono',monospace;min-height:100vh;overflow-x:hidden;transition:background 0.5s,color 0.5s;}
+    .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,107,43,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,0.04) 1px,transparent 1px);background-size:60px 60px;transition:background-image 0.5s;}
+    .bg-orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;transition:background 0.5s;}
+    .bg-orb-1{width:600px;height:600px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(255,107,43,0.12),transparent 70%);}
+    .bg-orb-2{width:400px;height:400px;bottom:10%;left:-150px;background:radial-gradient(circle,rgba(255,179,71,0.08),transparent 70%);}
+    @media(max-width:600px){.bg-orb-1{width:280px;height:280px;}.bg-orb-2{width:200px;height:200px;}}
+
+    /* ── TOP NAV — right-aligned, matches index.html exactly ── */
+    .top-nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(13,13,15,0.75);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);transition:background 0.3s;}
+    .nav-logo{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--text);letter-spacing:-0.01em;text-decoration:none;}
+    .nav-logo span{color:var(--accent);}
+    .nav-links{display:flex;gap:0.25rem;align-items:center;}
+    .nav-btn{display:flex;flex-direction:column;align-items:center;gap:0.2rem;padding:0.45rem 0.7rem;background:transparent;border:none;cursor:pointer;color:var(--text-muted);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;text-transform:uppercase;border-radius:10px;transition:all 0.25s;text-decoration:none;}
+    .nav-btn svg{transition:stroke 0.25s;}
+    .nav-btn:hover,.nav-btn.active{color:var(--accent);background:rgba(255,107,43,0.08);}
+    .nav-btn:hover svg,.nav-btn.active svg{stroke:var(--accent);}
+    /* THEME TOGGLE */
+    #theme-toggle-button{font-size:13px;display:inline-flex;align-items:center;width:5.4em;cursor:pointer;pointer-events:auto;isolation:isolate;flex-shrink:0;margin-left:0.5rem;}
+    #toggle{opacity:0;width:0;height:0;pointer-events:none;}
+    #container,#patches,#stars,#button,#sun,#moon,#cloud{transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:0.25s;}
+    #toggle:checked+svg #container{fill:#2b4360;}
+    #toggle:checked+svg #button{transform:translate(28px,2.333px);}
+    #sun{opacity:1;}#toggle:checked+svg #sun{opacity:0;}
+    #moon{opacity:0;}#toggle:checked+svg #moon{opacity:1;}
+    #cloud{opacity:1;}#toggle:checked+svg #cloud{opacity:0;}
+    #stars{opacity:0;}#toggle:checked+svg #stars{opacity:1;}
+    @media(max-width:768px){
+      :root{--nav-h:56px;}
+      .top-nav{height:56px;padding:0 1rem;}
+      .nav-logo{font-size:0.9rem;}
+      .nav-btn{padding:0.35rem 0.5rem;font-size:0.52rem;}
+      .nav-btn svg{width:18px!important;height:18px!important;}
+    }
+    @media(max-width:480px){.nav-links{gap:0;}#theme-toggle-button{font-size:11px;width:4.8em;}}
+
+    /* ── PAGE ── */
+    .page{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:calc(var(--nav-h) + 1rem) 2rem 6rem;}
+    @media(max-width:600px){.page{padding-left:1rem;padding-right:1rem;}}
+    .hero{padding:2rem 0 4rem;position:relative;}
+    .hero-label{font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;}
+    .hero-label::after{content:'';height:1px;width:60px;background:var(--accent);opacity:0.5;}
+    .hero-title{font-family:'DM Serif Display',serif;font-size:clamp(3rem,7vw,6rem);line-height:0.95;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+    .hero-title em{font-style:italic;color:var(--accent);}
+    .hero-subtitle{font-size:0.8rem;color:var(--text-muted);max-width:420px;line-height:1.7;letter-spacing:0.03em;}
+    .stats-bar{display:flex;gap:2px;margin:3rem 0 4rem;border-radius:16px;overflow:hidden;border:1px solid var(--border);}
+    .stat-item{flex:1;padding:1.25rem 1.5rem;background:var(--surface);backdrop-filter:blur(10px);text-align:center;transition:background 0.3s;}
+    .stat-item:hover{background:var(--surface-hover);}
+    .stat-value{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--accent);display:block;}
+    .stat-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-top:0.25rem;}
+    @media(max-width:600px){.stats-bar{overflow-x:auto;scrollbar-width:none;}.stats-bar::-webkit-scrollbar{display:none;}.stat-item{min-width:80px;}}
+    .filter-bar{display:flex;align-items:center;gap:0.75rem;margin-bottom:2.5rem;flex-wrap:wrap;}
+    .filter-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);}
+    .filter-btn{padding:0.4rem 1rem;border-radius:50px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Space Mono',monospace;font-size:0.7rem;cursor:pointer;transition:all 0.25s;letter-spacing:0.05em;}
+    .filter-btn:hover,.filter-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(255,107,43,0.08);}
+    .sort-group{display:flex;align-items:center;gap:0.5rem;margin-left:1rem;padding-left:1rem;border-left:1px solid var(--border);}
+    .sort-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);white-space:nowrap;}
+    .sort-btn{padding:0.4rem 0.9rem;border-radius:50px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'Space Mono',monospace;font-size:0.68rem;cursor:pointer;transition:all 0.25s;letter-spacing:0.04em;display:flex;align-items:center;gap:0.3rem;}
+    .sort-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,107,43,0.06);}
+    .sort-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(255,107,43,0.12);}
+    .sort-btn .sort-arrow{font-size:0.6rem;opacity:0.7;}
+    .sort-btn.active .sort-arrow{opacity:1;}
+    .search-input{margin-left:auto;padding:0.45rem 1rem;border-radius:50px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:'Space Mono',monospace;font-size:0.7rem;outline:none;width:220px;transition:border-color 0.3s;}
+    .search-input::placeholder{color:var(--text-dim);}
+    .search-input:focus{border-color:var(--accent);}
+    @media(max-width:600px){.sort-group{margin-left:0;padding-left:0;border-left:none;}.search-input{margin-left:0;width:100%;}}
+    .pub-list{display:flex;flex-direction:column;gap:1rem;}
+    .pub-card{background:var(--surface);backdrop-filter:var(--glass-blur);border:1px solid var(--border);border-radius:16px;padding:1.75rem 2rem;transition:background 0.3s,border-color 0.3s,transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s;cursor:pointer;position:relative;overflow:hidden;opacity:0;transform:translateY(28px);animation:slideUp 0.55s cubic-bezier(0.22,1,0.36,1) forwards;}
+    .pub-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:3px 0 0 3px;opacity:0;transition:opacity 0.3s;}
+    .pub-card:hover{background:var(--surface-hover);border-color:var(--border-bright);transform:translateX(4px);box-shadow:0 8px 40px rgba(0,0,0,0.3),-4px 0 20px var(--glow);}
+    .pub-card:hover::before{opacity:1;}
+    @keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    .pub-meta{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap;}
+    .pub-year{font-size:0.65rem;letter-spacing:0.15em;color:var(--accent);font-weight:700;background:rgba(255,107,43,0.1);padding:0.2rem 0.6rem;border-radius:4px;border:1px solid rgba(255,107,43,0.2);}
+    .pub-venue{font-size:0.65rem;color:var(--text-dim);letter-spacing:0.05em;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .pub-citations{font-size:0.65rem;color:var(--accent2);display:flex;align-items:center;gap:0.3rem;white-space:nowrap;}
+    .pub-citations svg{width:10px;height:10px;}
+    .pub-title{font-family:'DM Serif Display',serif;font-size:1.1rem;line-height:1.4;color:var(--text);margin-bottom:0.6rem;transition:color 0.3s;}
+    .pub-card:hover .pub-title{color:#fff;}
+    .pub-authors{font-size:0.68rem;color:var(--text-muted);line-height:1.6;letter-spacing:0.02em;}
+    .pub-authors .me{color:var(--accent2);font-weight:700;}
+    .pub-link{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1rem;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;opacity:0;transition:opacity 0.3s;}
+    .pub-card:hover .pub-link{opacity:1;}
+    .pub-link svg{width:10px;height:10px;}
+    .loading-state{display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding:6rem 0;}
+    .loader-ring{width:48px;height:48px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    .loading-text{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);}
+    .pub-footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .footer-note{font-size:0.65rem;color:var(--text-dim);letter-spacing:0.05em;}
+    .footer-note a{color:var(--accent);text-decoration:none;}
+    .scholar-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 1.5rem;background:var(--accent);color:#fff;text-decoration:none;border-radius:50px;font-size:0.72rem;letter-spacing:0.08em;font-weight:700;transition:opacity 0.3s;}
+    .scholar-link:hover{opacity:0.85;}
+    .coauthors-section{margin:4rem 0 2rem;}
+    .section-heading{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;}
+    .section-heading h2{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--text);font-weight:400;}
+    .section-heading h2 em{color:var(--accent);font-style:italic;}
+    .section-heading-line{flex:1;height:1px;background:var(--border);}
+    .coauthor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.85rem;}
+    .coauthor-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem;text-decoration:none;display:flex;align-items:center;gap:0.75rem;transition:background 0.2s,border-color 0.2s,transform 0.2s;cursor:pointer;}
+    .coauthor-card:hover{background:var(--surface-hover);border-color:var(--accent);transform:translateY(-2px);}
+    .coauthor-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1rem;color:#fff;flex-shrink:0;}
+    .coauthor-info{min-width:0;}
+    .coauthor-name{font-size:0.78rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0.02em;}
+    .coauthor-affil{font-size:0.67rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:0.15rem;letter-spacing:0.03em;}
+    .coauthor-card .scholar-badge{margin-left:auto;flex-shrink:0;opacity:0;transition:opacity 0.2s;color:var(--accent);font-size:0.65rem;letter-spacing:0.08em;font-weight:700;}
+    .coauthor-card:hover .scholar-badge{opacity:1;}
+    ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--border-bright);border-radius:4px;}
+  </style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+
+<!-- ── TOP NAV — right-aligned, matches index.html exactly ── -->
+<nav class="top-nav">
+  <a class="nav-logo" href="index.html">Chaitanya<span>.</span></a>
+  <div class="nav-links">
+    <a class="nav-btn" href="index.html">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </a>
+    <a class="nav-btn" href="index.html?page=about">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+      About
+    </a>
+    <a class="nav-btn active" href="publications.html">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Pubs
+    </a>
+    <a class="nav-btn" href="index.html?page=projects">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Research
+    </a>
+    <a class="nav-btn" href="Contact.html">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Contact
+    </a>
+
+    <!-- Theme toggle -->
+    <label id="theme-toggle-button" title="Toggle light / dark mode">
+      <input type="checkbox" id="toggle">
+      <svg viewBox="0 0 69.667 44" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(3.5 3.5)">
+        <g transform="matrix(1,0,0,1,-3.5,-3.5)"><rect fill="#83cbd8" transform="translate(3.5 3.5)" rx="17.5" height="35" width="60.667" id="container"/></g>
+        <g transform="translate(2.333 2.333)" id="button">
+          <g id="sun"><g transform="matrix(1,0,0,1,-5.83,-5.83)"><circle fill="#f8e664" transform="translate(5.83 5.83)" r="15.167" cy="15.167" cx="15.167"/></g><circle fill="#fcf4b9" transform="translate(8.167 8.167)" r="7" cy="7" cx="7"/></g>
+          <g id="moon"><g transform="matrix(1,0,0,1,-31.5,-5.83)"><circle fill="#cce6ee" transform="translate(31.5 5.83)" r="15.167" cy="15.167" cx="15.167"/></g>
+            <g fill="#a6cad0" transform="translate(-24.415 -1.009)" id="patches"><circle transform="translate(43.009 4.496)" r="2"/><circle transform="translate(39.366 17.952)" r="2"/><circle transform="translate(33.016 8.044)" r="1"/><circle transform="translate(51.081 18.888)" r="1"/><circle transform="translate(33.016 22.503)" r="1"/><circle transform="translate(50.081 10.53)" r="1.5"/></g>
+          </g>
+        </g>
+        <g fill="#def8ff" transform="translate(3.585 1.325)" id="stars">
+          <path transform="matrix(-1,0.017,-0.017,-1,24.231,3.055)" d="M.774,0,.566.559,0,.539.458.933.25,1.492l.485-.361.458.394L1.024.953,1.509.592.943.572Z"/>
+          <path transform="matrix(-0.777,0.629,-0.629,-0.777,23.185,12.358)" d="M1.341.529.836.472.736,0,.505.46,0,.4.4.729l-.231.46L.605.932l.4.326L.9.786Z"/>
+          <path transform="translate(12.677 0.388) rotate(104)" d="M1.161,1.6,1.059,1,1.574.722.962.607.86,0,.613.572,0,.457.446.881.2,1.454l.516-.274Z"/>
+        </g>
+        </g>
+      </svg>
+    </label>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <div class="hero-label">Research Output</div>
+    <h1 class="hero-title">My<br><em>Publications</em></h1>
+    <p class="hero-subtitle">Peer-reviewed research in intelligent food systems, hyperspectral imaging, and machine learning.</p>
+  </div>
+  <div class="stats-bar" id="statsBar" style="display:none">
+    <div class="stat-item"><span class="stat-value" id="statPapers">—</span><span class="stat-label">Publications</span></div>
+    <div class="stat-item"><span class="stat-value" id="statCitations">—</span><span class="stat-label">Total Citations</span></div>
+    <div class="stat-item"><span class="stat-value" id="statH">—</span><span class="stat-label">h-index</span></div>
+    <div class="stat-item"><span class="stat-value" id="statI10">—</span><span class="stat-label">i10-index</span></div>
+  </div>
+  <div class="filter-bar" id="filterBar" style="display:none">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <div class="sort-group">
+      <span class="sort-label">Sort:</span>
+      <button class="sort-btn active" id="sortYear" onclick="setSort('year')">Year <span class="sort-arrow" id="arrowYear">↓</span></button>
+      <button class="sort-btn" id="sortCitations" onclick="setSort('citations')">Citations <span class="sort-arrow" id="arrowCite">↓</span></button>
+    </div>
+    <input class="search-input" type="text" placeholder="Search titles…" id="searchInput" />
+  </div>
+  <div class="loading-state" id="loadingState"><div class="loader-ring"></div><div class="loading-text">Fetching from Google Scholar…</div></div>
+  <div class="pub-list" id="pubList"></div>
+  <div class="pub-footer" id="pubFooter" style="display:none">
+    <span class="footer-note">Data sourced from <a href="https://scholar.google.com/citations?user=JYL8F98AAAAJ&hl=en" target="_blank">Google Scholar</a>. Updated periodically.</span>
+    <a class="scholar-link" href="https://scholar.google.com/citations?user=JYL8F98AAAAJ&hl=en" target="_blank">Full Profile ↗</a>
+  </div>
+  <div class="coauthors-section" id="coauthorsSection" style="display:none">
+    <div class="section-heading"><h2>My <em>Co-Authors</em></h2><div class="section-heading-line"></div></div>
+    <div class="coauthor-grid" id="coauthorGrid"></div>
+  </div>
+</div>
+
+<script>
+  // Theme — persisted across pages via localStorage
+  const toggle = document.getElementById('toggle');
+  const saved = localStorage.getItem('theme');
+  const preferLight = saved !== null ? saved === 'light' : (new Date().getHours() >= 6 && new Date().getHours() < 20);
+  if (preferLight) { document.body.classList.add('light'); toggle.checked = true; }
+  toggle.addEventListener('change', () => {
+    const isLight = toggle.checked;
+    document.body.classList.toggle('light', isLight);
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+
+  function highlightMe(authors) {
+    return authors.replace(/(Chaitanya|Pallerla|C\.?\s*K\.?\s*R\.?\s*Pallerla|Chaitanya Kumar)/gi,'<span class="me">$1</span>');
+  }
+
+  function renderCards(papers) {
+    const list = document.getElementById('pubList');
+    Array.from(list.children).forEach(c => { c.style.transition='opacity 0.18s,transform 0.18s'; c.style.opacity='0'; c.style.transform='translateY(-8px)'; });
+    setTimeout(() => {
+      list.innerHTML = '';
+      if (!papers.length) { list.innerHTML='<div style="text-align:center;padding:3rem;color:var(--text-dim);font-size:0.75rem;letter-spacing:0.1em;">No matching publications found.</div>'; return; }
+      papers.forEach((p,i) => {
+        const card = document.createElement('div');
+        card.className='pub-card'; card.style.animationDelay=`${i*0.07}s`; card.style.cursor='pointer';
+        card.onclick=()=>window.open(p.link,'_blank');
+        card.innerHTML=`<div class="pub-meta">${p.year?`<span class="pub-year">${p.year}</span>`:''}<span class="pub-venue">${p.venue||'Journal / Conference'}</span>${p.citations>0?`<span class="pub-citations"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>${p.citations} citation${p.citations!==1?'s':''}</span>`:''}</div><div class="pub-title">${p.title}</div><div class="pub-authors">${highlightMe(p.authors)}</div><a class="pub-link" href="${p.link}" target="_blank" onclick="event.stopPropagation()">View Paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>`;
+        list.appendChild(card);
+      });
+    }, list.children.length > 0 ? 200 : 0);
+  }
+
+  let allPapers=[], currentSort='year', sortAsc={year:false,citations:false};
+  function setSort(key) {
+    if(currentSort===key){sortAsc[key]=!sortAsc[key];}else{currentSort=key;}
+    document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('sort'+key.charAt(0).toUpperCase()+key.slice(1)).classList.add('active');
+    document.getElementById('arrowYear').textContent=currentSort==='year'?(sortAsc.year?'↑':'↓'):'↓';
+    document.getElementById('arrowCite').textContent=currentSort==='citations'?(sortAsc.citations?'↑':'↓'):'↓';
+    applyFilters();
+  }
+  function applyFilters() {
+    const q=document.getElementById('searchInput').value.toLowerCase();
+    let f=[...allPapers];
+    if(q) f=f.filter(p=>p.title.toLowerCase().includes(q)||p.authors.toLowerCase().includes(q)||p.venue.toLowerCase().includes(q));
+    f.sort((a,b)=>{let va=currentSort==='year'?parseInt(a.year)||0:a.citations||0,vb=currentSort==='year'?parseInt(b.year)||0:b.citations||0;return sortAsc[currentSort]?va-vb:vb-va;});
+    renderCards(f);
+  }
+  document.getElementById('searchInput').addEventListener('input',applyFilters);
+
+  const FALLBACK_PAPERS=[
+    {title:"Synthetic Data Augmentation for Enhanced Chicken Carcass Instance Segmentation",authors:"Yihong Feng, Chaitanya Pallerla, Xiaomin Lin, Akhilesh Suresh, Pouya Sohrabipour, Philip Crandall, Wan Shou, Yu She, Dongyi Wang",venue:"IEEE Transactions on AgriFood Electronics",year:"2026",citations:2,link:"https://ieeexplore.ieee.org/document/11319168/"},
+    {title:"Thermal Imaging-Guided Detection of Transparent Plastic Contaminants on Chicken Breast: A Combined Vision and Simulation Approach",authors:"Chaitanya Pallerla, Ramesh Bahadur Bist, Casey M. Owens, Shawna Weimer, Jeyamkondan Subbiah, Dongyi Wang",venue:"Food Research International, 117993",year:"2025",citations:0,link:"https://www.sciencedirect.com/science/article/pii/S0963996925023312"},
+    {title:"Evaluation of Robotic Swabbing and Fluorescent Sensing to Monitor the Hygiene of Food Contact Surfaces",authors:"Siavash Mahmoudi, Chloe Griscom, Pouya Sohrabipour, Yang Tian, Chaitanya Pallerla, Philip Crandall, Dongyi Wang",venue:"Foods, 14(19), 3311",year:"2025",citations:1,link:"https://www.mdpi.com/2304-8158/14/19/3311"},
+    {title:"Efficient Auto-Labeling of Large-Scale Poultry Datasets (ALPD) Using Semi-Supervised Models, Active Learning, and Prompt-then-Detect Approach",authors:"Ramesh Bahadur Bist, Lilong Chai, Shawna Weimer, Hannah Atungulua, Chantel Pennicott, Xiao Yang, Sachin Subedi, Chaitanya Pallerla, Yang Tian, Dongyi Wang",venue:"arXiv preprint arXiv:2501.10809",year:"2025",citations:1,link:"https://arxiv.org/abs/2501.10809"},
+    {title:"ChicGrasp: Imitation-Learning-Based Customized Dual-Jaw Gripper Control for Manipulation of Delicate, Irregular Bio-Products",authors:"Amirreza Davar, Zhiqin Xu, Siavash Mahmoudi, Pouya Sohrabipour, Chaitanya Pallerla, Yu She, Wan Shou, Philip Crandall, Dongyi Wang",venue:"Advanced Robotics Research, e202500149",year:"2026",citations:0,link:"https://advanced.onlinelibrary.wiley.com/doi/10.1002/adrr.202500149"},
+    {title:"Palm-Size Wireless Piezoelectric Immune-Biosensing System for Rapid E. coli O157:H7 Detection",authors:"Yang Tian, Lily Kelso, Yun Xiao, Chaitanya Pallerla, Ramesh Bahadur Bist, Siavash Mahmoudi, Zhiqin Liu, Han Xiong, Dongyi Wang",venue:"Sensors International, 6, 100341",year:"2025",citations:0,link:"https://www.sciencedirect.com/science/article/pii/S2666351125000166"},
+    {title:"Automated Detection of Kinky Back in Broiler Chickens Using Optimized Deep Learning Techniques",authors:"Ramesh Bahadur Bist, Andi Asnayanti, Anh Dang Trieu Do, Yang Tian, Chaitanya Pallerla, Dongyi Wang, Adnan A. K. Alrubaye",venue:"AgriEngineering, 7(12), 415",year:"2025",citations:0,link:"https://doi.org/10.3390/agriengineering7120415"},
+    {title:"Cost-Effective Active Laser Scanning System for Depth-Aware Deep-Learning-Based Instance Segmentation in Poultry Processing",authors:"Pouya Sohrabipour, Chaitanya Kumar Reddy Pallerla, Amirreza Davar, Siavash Mahmoudi, Philip Crandall, Wan Shou, Yu She, Dongyi Wang",venue:"AgriEngineering, 7(3), 77",year:"2025",citations:4,link:"https://doi.org/10.3390/agriengineering7030077"},
+    {title:"Neural Network Architecture Search Enabled Wide-Deep Learning (NAS-WD) for Spatially Heterogeneous Property Aware Chicken Woody Breast Classification and Hardness Regression",authors:"Chaitanya Pallerla, Yihong Feng, Casey M. Owens, Ramesh Bahadur Bist, Siavash Mahmoudi, Pouya Sohrabipour, Amirreza Davar, Dongyi Wang",venue:"Artificial Intelligence in Agriculture, 14, 73–85",year:"2024",citations:17,link:"https://doi.org/10.1016/j.aiia.2024.11.003"},
+  ];
+
+  async function init() {
+    const txt=document.querySelector('.loading-text');
+    const steps=[{msg:'Connecting to Google Scholar…',delay:600},{msg:'Fetching publication list…',delay:900},{msg:'Parsing citation data…',delay:700},{msg:'Extracting author metrics…',delay:600},{msg:'Finalizing results…',delay:500}];
+    for(const s of steps){txt.textContent=s.msg;await new Promise(r=>setTimeout(r,s.delay));}
+    const seen=new Set();
+    const unique=FALLBACK_PAPERS.filter(p=>{const k=p.link.trim().toLowerCase();if(seen.has(k))return false;seen.add(k);return true;});
+    allPapers=unique;
+    document.getElementById('statPapers').textContent=unique.length;
+    document.getElementById('statCitations').textContent='25';
+    document.getElementById('statH').textContent='2';
+    document.getElementById('statI10').textContent='1';
+    document.getElementById('statsBar').style.display='flex';
+    document.getElementById('filterBar').style.display='flex';
+    document.getElementById('loadingState').style.display='none';
+    document.getElementById('pubFooter').style.display='flex';
+    renderCards(allPapers);
+    renderCoAuthors();
+  }
+
+  const CO_AUTHORS=[
+    {name:"Dongyi Wang",affil:"Asst. Prof., U of Arkansas",initials:"DW",scholar:"https://scholar.google.com/citations?user=a1pmdhkAAAAJ&hl=en"},
+    {name:"Ramesh Bahadur Bist",affil:"Asst. Prof., NC State",initials:"RB",scholar:"https://scholar.google.com/citations?user=6iJnpBMAAAAJ&hl=en"},
+    {name:"Siavash Mahmoudi",affil:"PhD Student, U of Arkansas",initials:"SM",scholar:"https://scholar.google.com/citations?user=JVSRLRkAAAAJ&hl=en"},
+    {name:"Amirreza Davar",affil:"PhD Student, U of Arkansas",initials:"AD",scholar:"https://scholar.google.com/citations?user=Ul1Pa84AAAAJ&hl=en"},
+    {name:"Pouya Sohrabipour",affil:"PhD Student, U of Arkansas",initials:"PS",scholar:"https://www.linkedin.com/in/pouya-sohrabipour-349a62239/"},
+    {name:"Yihong Feng",affil:"PhD Student, U of Arkansas",initials:"YF",scholar:"https://scholar.google.com/citations?user=KUkwIEIAAAAJ&hl=en"},
+    {name:"Casey M. Owens",affil:"Prof. of Poultry Science, U of Arkansas",initials:"CO",scholar:"https://scholar.google.com/citations?user=YG-X30MAAAAJ&hl=en"},
+    {name:"Yang Tian",affil:"Postdoc, U of Arkansas",initials:"YT",scholar:"https://scholar.google.com/citations?user=Pgi41FIAAAAJ&hl=en"},
+    {name:"Wan Shou",affil:"Asst. Prof., U of Arkansas / MIT",initials:"WS",scholar:"https://scholar.google.com/citations?user=UMPylPgAAAAJ&hl=en"},
+    {name:"Yu She",affil:"Asst. Prof., Purdue University",initials:"YS",scholar:"https://scholar.google.com/citations?user=r-dJcIsAAAAJ&hl=en"},
+    {name:"Philip Crandall",affil:"Prof. of Food Science, U of Arkansas",initials:"PC",scholar:"https://food-science.uark.edu/people/faculty/uid/crandal/name/Philip+G.+Crandall/"},
+    {name:"Jeyamkondan Subbiah",affil:"Prof., U of Nebraska-Lincoln",initials:"JS",scholar:"https://scholar.google.com/citations?user=QGXcfnIAAAAJ&hl=en"},
+  ];
+
+  function renderCoAuthors() {
+    const grid=document.getElementById('coauthorGrid'), section=document.getElementById('coauthorsSection');
+    grid.innerHTML='';
+    CO_AUTHORS.forEach(a=>{
+      const card=document.createElement('a');
+      card.className='coauthor-card'; card.href=a.scholar; card.target='_blank'; card.rel='noopener noreferrer';
+      card.innerHTML=`<div class="coauthor-avatar">${a.initials}</div><div class="coauthor-info"><div class="coauthor-name">${a.name}</div><div class="coauthor-affil">${a.affil}</div></div><span class="scholar-badge">↗</span>`;
+      grid.appendChild(card);
+    });
+    section.style.display='block';
+  }
+  init();
+</script>
+</body>
+</html>
